@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import rh.javapleno.pagamento.model.Colaborador;
 
 @Component
-@FeignClient(name = "rh-colaborador", url = "localhost:8001", path = "/colaborador")
+@FeignClient(name = "rh-colaborador", path = "/colaborador")
 public interface ColaboradorFeignClient {
     @GetMapping(value = "/{id}")
     ResponseEntity<Colaborador> findById(@PathVariable Long id);
