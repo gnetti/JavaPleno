@@ -1,0 +1,1 @@
+INSERT INTO `tb_colaborador` (`id`, `nome`, `valor_dia`) VALUES (NULL, 'Luiz', '200'), (NULL, 'Antonio', '300'), (NULL, 'Felipe', '250')
