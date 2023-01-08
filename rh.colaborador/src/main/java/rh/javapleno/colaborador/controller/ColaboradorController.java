@@ -1,9 +1,9 @@
 package rh.javapleno.colaborador.controller;
 
 import lombok.RequiredArgsConstructor;
-
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,11 +21,19 @@ import java.util.Optional;
 
 public class ColaboradorController {
 
+    @Value("${test.config}")
+    private String devConfig;
     @Autowired
     private Environment env;
 
 
     private final ColaboradorService colaboradorService;
+
+    @GetMapping(value = "/config")
+    public ResponseEntity<Void> getConfig(){
+        log.info("CONFIG= " + devConfig);
+        return ResponseEntity.noContent().build();
+    }
 
     @PostMapping
     public Colaborador salvar(@RequestBody Colaborador colaborador) {
