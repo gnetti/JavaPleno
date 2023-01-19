@@ -5,8 +5,6 @@ import org.springframework.stereotype.Service;
 import rh.javapleno.colaborador.model.Trabalho;
 import rh.javapleno.colaborador.repository.TrabalhoRepository;
 
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor
 public class TrabalhoService {
@@ -16,5 +14,6 @@ public class TrabalhoService {
     public Trabalho salvar(Trabalho trabalho) {
         return trabalhoRepository.save(trabalho);
     }
+
 
 }

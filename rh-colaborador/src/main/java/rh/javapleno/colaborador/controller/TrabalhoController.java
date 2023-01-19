@@ -11,7 +11,6 @@ import rh.javapleno.colaborador.model.Trabalho;
 import rh.javapleno.colaborador.service.ColaboradorService;
 import rh.javapleno.colaborador.service.TrabalhoService;
 
-import java.util.List;
 import java.util.Optional;
 
 @Slf4j
