@@ -7,14 +7,14 @@ import org.springframework.context.annotation.Profile;
 import rh.javapleno.colaborador.service.DBService;
 
 @Configuration
-//@Profile("dev")
-public class TestConfig {
+@Profile("dev")
+public class DevConfig {
 
     @Autowired
     private DBService dbService;
 
-//    @Bean
-//    public void startDB() {
-//        this.dbService.startDB();
-//    }
+    @Bean
+    public void startDB() {
+        this.dbService.startDB();
+    }
 }
