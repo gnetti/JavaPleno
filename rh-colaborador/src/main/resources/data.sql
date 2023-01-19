@@ -1,3 +1,12 @@
-INSERT INTO tb_worker (name, daily_Income) VALUES ('Bob', 200.0);
-INSERT INTO tb_worker (name, daily_Income) VALUES ('Maria', 300.0);
-INSERT INTO tb_worker (name, daily_Income) VALUES ('Alex', 250.0);
+INSERT INTO `tb_colaborador` (`id`, `nome`, `valor_dia`) VALUES (NULL, 'Helenna', '380'), (NULL, 'Melissa', '320'), (NULL, 'Will', '390'), (NULL, 'John', '285'), (NULL, 'Mary', '395');
+
+INSERT INTO `tb_trabalho` (`id`, `data`, `colaborador_id`) VALUES (NULL, '2023-12-02', '1'), (NULL, '2023-12-02', '1'), (NULL, '2023-12-04', '1'), (NULL, '2023-12-09', '1'), (NULL, '2023-12-10', '1'), (NULL, '2023-12-11', '1'), (NULL, '2023-12-16', '1'), (NULL, '2023-12-17', '1'), (NULL, '2023-12-18', '1'), (NULL, '2023-12-24', '1'), (NULL, '2023-12-25', '1'), (NULL, '2023-12-26', '1');
+
+
+INSERT INTO `tb_trabalho` (`id`, `data`, `colaborador_id`) VALUES (NULL, '2023-12-02', '2'), (NULL, '2023-12-02', '2'), (NULL, '2023-12-04', '2'), (NULL, '2023-12-09', '2'), (NULL, '2023-12-10', '2'), (NULL, '2023-12-11', '2'), (NULL, '2023-12-16', '2'), (NULL, '2023-12-17', '2'), (NULL, '2023-12-18', '2'), (NULL, '2023-12-24', '2'), (NULL, '2023-12-25', '2'), (NULL, '2023-12-26', '2');
+
+INSERT INTO `tb_trabalho` (`id`, `data`, `colaborador_id`) VALUES (NULL, '2023-12-02', '3'), (NULL, '2023-12-02', '3'), (NULL, '2023-12-04', '3'), (NULL, '2023-12-09', '3'), (NULL, '2023-12-10', '3'), (NULL, '2023-12-11', '3'), (NULL, '2023-12-16', '3'), (NULL, '2023-12-17', '3'), (NULL, '2023-12-18', '3'), (NULL, '2023-12-24', '3'), (NULL, '2023-12-25', '3'), (NULL, '2023-12-26', '3');
+
+INSERT INTO `tb_trabalho` (`id`, `data`, `colaborador_id`) VALUES (NULL, '2023-12-02', '4'), (NULL, '2023-12-02', '4'), (NULL, '2023-12-04', '4'), (NULL, '2023-12-09', '4'), (NULL, '2023-12-10', '4'), (NULL, '2023-12-11', '4'), (NULL, '2023-12-16', '4'), (NULL, '2023-12-17', '4'), (NULL, '2023-12-18', '4'), (NULL, '2023-12-24', '4'), (NULL, '2023-12-25', '4'), (NULL, '2023-12-26', '4');
+
+INSERT INTO `tb_trabalho` (`id`, `data`, `colaborador_id`) VALUES (NULL, '2023-12-02', '5'), (NULL, '2023-12-02', '5'), (NULL, '2023-12-04', '5'), (NULL, '2023-12-09', '5'), (NULL, '2023-12-10', '5'), (NULL, '2023-12-11', '5'), (NULL, '2023-12-16', '5'), (NULL, '2023-12-17', '5'), (NULL, '2023-12-18', '5'), (NULL, '2023-12-24', '5'), (NULL, '2023-12-25', '5'), (NULL, '2023-12-26', '5');
