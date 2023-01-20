@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relvalortotaldiastrabporcolab" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="887387df-8b50-4a02-859f-fd22aba26a01">
+	<property name="com.jaspersoft.studio.data.sql.tables"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="JavaPleno"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT 
+t.id AS IdDiaTrabalhado, c.id AS IdColaborador, c.nome AS NomeColaborador, c.valor_dia  AS ValorDiadeTrabalhado, t.data  AS DataDiaTrabalhado
+FROM tb_colaborador AS c 
+JOIN tb_trabalho AS t ON c.id = t.colaborador_id]]>
+	</queryString>
+	<field name="IdDiaTrabalhado" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="IdDiaTrabalhado"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_trabalho"/>
+	</field>
+	<field name="IdColaborador" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="IdColaborador"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_colaborador"/>
+	</field>
+	<field name="NomeColaborador" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome"/>
+		<property name="com.jaspersoft.studio.field.label" value="NomeColaborador"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_colaborador"/>
+	</field>
+	<field name="ValorDiadeTrabalhado" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="valor_dia"/>
+		<property name="com.jaspersoft.studio.field.label" value="ValorDiadeTrabalhado"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_colaborador"/>
+	</field>
+	<field name="DataDiaTrabalhado" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="data"/>
+		<property name="com.jaspersoft.studio.field.label" value="DataDiaTrabalhado"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_trabalho"/>
+	</field>
+	<variable name="ValorDiadeTrabalhado1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{ValorDiadeTrabalhado}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="39" width="550" height="30" uuid="c9d10604-a991-4e7d-9fd3-9a12b295344b"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="20" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Relatório de dias tabalhados]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyy HH:mm">
+				<reportElement x="448" y="0" width="102" height="30" uuid="c6ec895d-feb2-4f6d-9044-8f8f9e1a4cd3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="374" y="0" width="100" height="30" uuid="90358e58-dbc6-4f33-bbcb-292c0ddc75ae"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Gerado em:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="80" height="20" backcolor="#B8B6B6" uuid="845de19b-32a3-4f3f-865e-be5d85c222cc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="33b6bf88-c6fc-4f02-89e0-8c31a431533a"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="80" y="0" width="300" height="20" backcolor="#B8B6B6" uuid="0cf88b92-9b10-47d5-a2a7-130685431983">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d5be7e9c-cc03-4459-9802-1e65d2dedb9f"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="380" y="0" width="100" height="20" backcolor="#B8B6B6" uuid="bb5ebc26-e5b6-4a54-91c7-f1763b64e1f2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8e282b26-78c4-452d-bba0-ff3f89caac61"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="460" y="0" width="90" height="20" backcolor="#B8B6B6" uuid="5b07d249-8140-4eac-af54-35ffd090fb59">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="22d69149-ce1c-41ef-97be-00ee1116e3df"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="0" width="550" height="30" backcolor="#F0F0F0" uuid="96e49587-7a39-4e22-a1d8-0dd044dbc7ff">
+					<printWhenExpression><![CDATA[new java.lang.Boolean($V{REPORT_COUNT} %2==0)]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<textField>
+				<reportElement x="0" y="0" width="80" height="30" uuid="d1bd975c-0c29-4a7d-8046-d111ab4ae4be">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="33b6bf88-c6fc-4f02-89e0-8c31a431533a"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{IdColaborador}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="0" width="299" height="30" uuid="2fbd3629-19e5-44d0-9523-94ae484a7e0d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d5be7e9c-cc03-4459-9802-1e65d2dedb9f"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{NomeColaborador}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="380" y="0" width="100" height="30" uuid="49080aa7-1ac8-47bb-9d60-8ee1405dbd65">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8e282b26-78c4-452d-bba0-ff3f89caac61"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{DataDiaTrabalhado}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤#,#00.00;¤-#,#00.00">
+				<reportElement x="480" y="0" width="70" height="30" uuid="501eb064-d885-449a-ae4f-b0ea853395b3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="22d69149-ce1c-41ef-97be-00ee1116e3df"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ValorDiadeTrabalhado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="30" splitType="Stretch">
+			<textField pattern="¤#,#00.00;¤-#,#00.00">
+				<reportElement mode="Opaque" x="480" y="0" width="70" height="30" backcolor="#DCDCDC" uuid="89dd9874-37be-44f6-86cf-5851a5f0d0e3"/>
+				<box>
+					<pen lineWidth="0.15"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{ValorDiadeTrabalhado1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="379" y="0" width="101" height="30" uuid="db8c1dd5-fdd0-47f8-b75a-e74704f224a8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total:]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="60" splitType="Stretch">
+			<textField>
+				<reportElement x="461" y="20" width="75" height="30" uuid="5bd6474e-d5db-44d8-9ba8-d0de832f0719"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Pág " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="500" y="20" width="50" height="30" uuid="6538784a-c3b5-48ba-9480-aca45b8befc1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<noData>
+		<band height="50"/>
+	</noData>
+</jasperReport>
