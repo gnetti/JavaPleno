@@ -24,6 +24,7 @@ public class Trabalho implements Serializable {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate data;
 
+    private Double valorDia;
 
     @ManyToOne
     private Colaborador colaborador;

@@ -39,4 +39,4 @@ public class TrabalhoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(trabalhoModel);
     }
 
-    }
+}
