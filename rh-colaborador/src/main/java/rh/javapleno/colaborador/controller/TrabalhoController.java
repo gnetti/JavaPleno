@@ -34,9 +34,9 @@ public class TrabalhoController {
 
     public ResponseEntity<Trabalho> salvar(@RequestBody Trabalho trabalho, @PathVariable Long id) {
         Optional<Colaborador> colaboradorOptional = pesquisarId(id);
-        Trabalho trabalhoModel = trabalhoService.salvar(trabalho);
-        trabalhoModel.setColaborador(colaboradorOptional.get());
-        return ResponseEntity.status(HttpStatus.CREATED).body(trabalhoModel);
+        trabalho.setColaborador(colaboradorOptional.get());
+        trabalho.setValorDia(colaboradorOptional.get().getValorDia());
+        return ResponseEntity.status(HttpStatus.CREATED).body(trabalhoService.salvar(trabalho));
     }
 
 }
