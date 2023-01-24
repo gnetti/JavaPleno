@@ -17,7 +17,7 @@ import java.util.Optional;
 @RefreshScope
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/trabalho")
+@RequestMapping("/pagamento")
 public class TrabalhoController {
 
     private final TrabalhoService trabalhoService;

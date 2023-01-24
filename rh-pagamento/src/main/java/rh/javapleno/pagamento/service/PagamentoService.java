@@ -1,20 +1,17 @@
 package rh.javapleno.pagamento.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import rh.javapleno.pagamento.component.ColaboradorFeignClientComponent;
-import rh.javapleno.pagamento.model.Colaborador;
+import rh.javapleno.pagamento.PagamentoRepository;
 import rh.javapleno.pagamento.model.Pagamento;
 
 @Service
+@RequiredArgsConstructor
 public class PagamentoService {
-    @Autowired
-    private ColaboradorFeignClientComponent colaboradorFeignClientComponent;
 
-    public Pagamento getPagamento(long colaboradorId, int dias) {
+    private final PagamentoRepository pagamentoRepository;
 
-        Colaborador colaborador = colaboradorFeignClientComponent.findById((colaboradorId)).getBody();
-        return new Pagamento(colaborador.getNome(), colaborador.getValorDia(), dias);
+    public Pagamento salvar(Pagamento trabalho) {
+        return pagamentoRepository.save(trabalho);
     }
 }

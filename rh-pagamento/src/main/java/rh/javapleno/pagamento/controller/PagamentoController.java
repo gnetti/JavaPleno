@@ -1,33 +1,36 @@
 package rh.javapleno.pagamento.controller;
 
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import rh.javapleno.pagamento.model.Colaborador;
 import rh.javapleno.pagamento.model.Pagamento;
+import rh.javapleno.pagamento.service.ColaboradorService;
 import rh.javapleno.pagamento.service.PagamentoService;
 
+import java.util.Optional;
+
+@RequiredArgsConstructor
 @RestController
-@RequestMapping(value = "/pagamento")
+@RequestMapping("/pagamento")
 public class PagamentoController {
 
-    @Autowired
-    private PagamentoService pagamentoService;
+    private final PagamentoService pagamentoService;
+    private final ColaboradorService colaboradorService;
 
-    @HystrixCommand(fallbackMethod = "getPagamentoAlternative")
-    @GetMapping(value = "/{colaboradorId}/dias/{dias}")
-    public ResponseEntity<Pagamento> getPagamento(@PathVariable Long colaboradorId, @PathVariable Integer dias) {
-        Pagamento pagamento = pagamentoService.getPagamento(colaboradorId, dias);
-        return ResponseEntity.ok(pagamento);
-
+    @GetMapping("/{id}")
+    public ResponseEntity<Colaborador> pesquisarId(@PathVariable Long id) {
+        return colaboradorService.pesquisarId(id);
     }
 
-    public ResponseEntity<Pagamento> getPagamentoAlternative(Long colaboradorId, Integer dias) {
-        Pagamento pagamento = new Pagamento("Luiz", 400.0, dias);
-        return ResponseEntity.ok(pagamento);
+    @PostMapping("/{id}")
 
+    public ResponseEntity<Pagamento> salvar(@RequestBody Pagamento pagamento, @PathVariable Long id) {
+        ResponseEntity<Colaborador> colaboradorOptional = pesquisarId(id);
+        pagamento.setColaboradorId(colaboradorOptional.getBody().getId());
+        pagamento.setValorDia(colaboradorOptional.getBody().getValorDia());
+        return ResponseEntity.status(HttpStatus.CREATED).body(pagamentoService.salvar(pagamento));
     }
 }
