@@ -6,6 +6,9 @@ import lombok.Data;
 public class Colaborador {
 
     private Long id;
+
+    private Long cargoId;
+
     private String nome;
-    private Double valorDia;
+
 }

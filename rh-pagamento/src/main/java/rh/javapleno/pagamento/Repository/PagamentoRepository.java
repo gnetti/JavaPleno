@@ -1,4 +1,4 @@
-package rh.javapleno.pagamento;
+package rh.javapleno.pagamento.Repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import rh.javapleno.pagamento.model.Pagamento;

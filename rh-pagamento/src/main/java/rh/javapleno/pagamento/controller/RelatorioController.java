@@ -1,4 +1,4 @@
-package rh.javapleno.colaborador.controller;
+package rh.javapleno.pagamento.controller;
 
 
 import lombok.RequiredArgsConstructor;
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import rh.javapleno.colaborador.service.RelatorioService;
-import rh.javapleno.colaborador.util.DateUtils;
+import rh.javapleno.pagamento.service.RelatorioService;
+import rh.javapleno.pagamento.util.DateUtils;
 
 import java.util.Date;
 

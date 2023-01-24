@@ -2,7 +2,7 @@ package rh.javapleno.pagamento.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import rh.javapleno.pagamento.PagamentoRepository;
+import rh.javapleno.pagamento.Repository.PagamentoRepository;
 import rh.javapleno.pagamento.model.Pagamento;
 
 @Service

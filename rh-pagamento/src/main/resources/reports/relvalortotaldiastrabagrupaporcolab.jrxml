@@ -62,11 +62,11 @@
 	<parameter name="DATA_FIM" class="java.util.Date"/>
 	<queryString>
 		<![CDATA[SELECT c.id AS IdColaborador, c.nome AS NomeColaborador,
-SUM(t.valor_dia) AS ValorTotal
+SUM(p.valor_dia) AS ValorTotal
  
 FROM tb_colaborador AS c 
-JOIN tb_trabalho AS t ON c.id = t.colaborador_id
-WHERE 1 = 1 AND  t.data  BETWEEN  $P{DATA_INICIO} AND $P{DATA_FIM}
+JOIN tb_pagamento AS p ON c.id = p.colaborador_id
+WHERE 1 = 1 AND  p.data  BETWEEN  $P{DATA_INICIO} AND $P{DATA_FIM}
 
 GROUP BY  c.id, c.nome
 ORDER BY c.id]]>
@@ -120,7 +120,7 @@ ORDER BY c.id]]>
 			</textField>
 			<image hAlign="Center">
 				<reportElement x="0" y="0" width="65" height="60" uuid="94883631-a913-43e2-b182-ab8d77d0181e"/>
-				<imageExpression><![CDATA["C:/JavaPleno/rh-colaborador/src/main/resources/image/logo.png"]]></imageExpression>
+				<imageExpression><![CDATA["C:/JavaPleno/rh-pagamento/src/main/resources/image/logo.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="380" y="30" width="50" height="20" uuid="0b3f9342-da78-4cfa-9fc5-2301c4749678"/>

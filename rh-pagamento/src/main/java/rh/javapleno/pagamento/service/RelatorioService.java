@@ -1,4 +1,4 @@
-package rh.javapleno.colaborador.service;
+package rh.javapleno.pagamento.service;
 
 
 import lombok.RequiredArgsConstructor;

@@ -17,15 +17,9 @@ import java.util.List;
 @NoArgsConstructor
 public class Colaborador {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String nome;
-	private Double valorDia;
-
-	@JsonIgnore
-	@OneToMany(mappedBy = "colaborador",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-	private List<Trabalho> listaTrabalho;
-
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private Long cargoId;
+    private String nome;
 }

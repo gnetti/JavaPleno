@@ -1,31 +1,26 @@
-package rh.javapleno.colaborador.model;
+package rh.javapleno.pagamento.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "tb_trabalho")
-public class Trabalho implements Serializable {
+@Table(name = "tb_cargo")
+public class Cargo implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate data;
+    private String descricaoCargo;
 
     private Double valorDia;
 
-    @ManyToOne
-    private Colaborador colaborador;
 }

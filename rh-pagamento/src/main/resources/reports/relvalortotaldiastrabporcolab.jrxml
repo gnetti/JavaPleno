@@ -63,12 +63,12 @@
 	<parameter name="ID_COLABORADOR" class="java.lang.Long"/>
 	<queryString>
 		<![CDATA[SELECT 
- c.id AS IdColaborador, c.nome AS NomeColaborador, c.valor_dia  AS ValorDiadeTrabalhado, t.data  AS DataDiaTrabalhado
+ c.id AS IdColaborador, c.nome AS NomeColaborador, p.valor_dia  AS ValorDiadeTrabalhado, p.data  AS DataDiaTrabalhado
 FROM tb_colaborador AS c 
-JOIN tb_trabalho AS t ON c.id = t.colaborador_id
+JOIN tb_pagamento AS p ON c.id = p.colaborador_id
 WHERE 1 = 1
 AND (c.id = $P{ID_COLABORADOR} or  $P{ID_COLABORADOR} IS NULL )
-AND t.data  BETWEEN  $P{DATA_INICIO} AND $P{DATA_FIM}]]>
+AND p.data  BETWEEN  $P{DATA_INICIO} AND $P{DATA_FIM}]]>
 	</queryString>
 	<field name="IdColaborador" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.name" value="id"/>
@@ -83,12 +83,12 @@ AND t.data  BETWEEN  $P{DATA_INICIO} AND $P{DATA_FIM}]]>
 	<field name="ValorDiadeTrabalhado" class="java.lang.Double">
 		<property name="com.jaspersoft.studio.field.name" value="valor_dia"/>
 		<property name="com.jaspersoft.studio.field.label" value="ValorDiadeTrabalhado"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="tb_colaborador"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_pagamento"/>
 	</field>
 	<field name="DataDiaTrabalhado" class="java.sql.Date">
 		<property name="com.jaspersoft.studio.field.name" value="data"/>
 		<property name="com.jaspersoft.studio.field.label" value="DataDiaTrabalhado"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="tb_trabalho"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_pagamento"/>
 	</field>
 	<variable name="ValorDiadeTrabalhado1" class="java.lang.Double" calculation="Sum">
 		<variableExpression><![CDATA[$F{ValorDiadeTrabalhado}]]></variableExpression>
@@ -125,7 +125,7 @@ AND t.data  BETWEEN  $P{DATA_INICIO} AND $P{DATA_FIM}]]>
 			</textField>
 			<image hAlign="Center">
 				<reportElement x="0" y="0" width="65" height="60" uuid="94883631-a913-43e2-b182-ab8d77d0181e"/>
-				<imageExpression><![CDATA["C:/JavaPleno/rh-colaborador/src/main/resources/image/logo.png"]]></imageExpression>
+				<imageExpression><![CDATA["C:/JavaPleno/rh-pagamento/src/main/resources/image/logo.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="380" y="30" width="50" height="20" uuid="0b3f9342-da78-4cfa-9fc5-2301c4749678"/>

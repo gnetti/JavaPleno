@@ -37,7 +37,7 @@ public class ColaboradorService {
     public void alterar(Colaborador colaborador) {
         Colaborador colaboradorEntity = colaboradorRepository.findById(colaborador.getId()).orElseThrow();
         colaboradorEntity.setNome(colaborador.getNome());
-        colaboradorEntity.setValorDia(colaborador.getValorDia());
+        colaboradorEntity.setCargoId(colaborador.getCargoId());
         colaboradorRepository.save(colaborador);
     }
 }
