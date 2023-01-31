@@ -21,7 +21,7 @@ public class UsuarioService {
 
     private final PasswordEncoder passwordEncoder;
 
-    public Usuario salvar(Usuario usuario) {
+       public Usuario salvar(Usuario usuario) {
         Usuario usuarioModel = usuarioRepository.save(usuario);
         return usuarioModel;
     }

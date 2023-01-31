@@ -1,16 +1,13 @@
 package rh.javapleno.usuario.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-
 import rh.javapleno.usuario.model.Role;
 import rh.javapleno.usuario.model.Usuario;
-import rh.javapleno.usuario.repository.UsuarioRepository;
 import rh.javapleno.usuario.service.UsuarioService;
 
 import java.util.List;
@@ -24,10 +21,9 @@ public class UsuarioController {
 
     private final UsuarioService usuarioService;
 
+
     private final PasswordEncoder passwordEncoder;
 
-    @Autowired
-    private UsuarioRepository repository;
 
     @PostMapping
     public Usuario salvar(@RequestBody Usuario usuario) {

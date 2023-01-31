@@ -4,12 +4,13 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import rh.javapleno.pagamento.model.Colaborador;
+import rh.javapleno.pagamento.model.Usuario;
 
 
-@FeignClient(name = "rh-colaborador", path = "/colaborador")
-public interface ColaboradorFeignClient {
+@FeignClient(name = "rh-usuario", path = "/usuario")
+public interface UsuarioFeignClient {
 
     @GetMapping(value = "/{id}")
-    ResponseEntity<Colaborador> pesquisarId(@PathVariable("id") Long id);
+    ResponseEntity<Usuario> pesquisarId(@PathVariable("id") Long id);
+
 }

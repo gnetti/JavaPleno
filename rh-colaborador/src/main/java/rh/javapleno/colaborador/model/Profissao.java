@@ -1,14 +1,14 @@
 package rh.javapleno.colaborador.model;
 
-
 import lombok.Data;
 
 @Data
-public class Cargo {
+public class Profissao {
 
     private Long id;
 
-    private String descricaoCargo;
+    private String descricao;
 
     private Double valorDia;
+
 }

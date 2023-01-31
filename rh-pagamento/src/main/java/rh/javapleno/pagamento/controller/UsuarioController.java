@@ -6,20 +6,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import rh.javapleno.pagamento.model.Colaborador;
-import rh.javapleno.pagamento.service.ColaboradorService;
+import rh.javapleno.pagamento.model.Usuario;
+import rh.javapleno.pagamento.service.UsuarioService;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/colaborador")
+@RequestMapping("/usuario")
 
-public class ColaboradorController {
+public class UsuarioController {
 
-    private final ColaboradorService colaboradorService;
+    private final UsuarioService usuarioService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<Colaborador> pesquisarId(@PathVariable Long id){
-        return colaboradorService.pesquisarId(id);
+    public ResponseEntity<Usuario> pesquisarId(@PathVariable Long id) {
+        return usuarioService.pesquisarId(id);
     }
 
 }

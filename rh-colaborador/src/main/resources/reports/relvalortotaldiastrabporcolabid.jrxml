@@ -74,18 +74,8 @@
 FROM tb_usuario AS u 
 JOIN tb_pagamento AS p ON u.id = p.colaborador_id
 WHERE 1 = 1 AND u.colaborador = '1'
-AND (u.id = $P{ID_COLABORADOR} or  $P{ID_COLABORADOR} IS NULL )
-AND p.data  BETWEEN  $P{DATA_INICIO} AND $P{DATA_FIM}
-
-
-
-
-
-
-
-
-
-]]>
+AND (u.id = $P{ID_COLABORADOR} or  $P{ID_COLABORADOR} IS  NULL )
+AND p.data  BETWEEN  $P{DATA_INICIO} AND $P{DATA_FIM}]]>
 	</queryString>
 	<field name="IdColaborador" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.name" value="id"/>
@@ -131,7 +121,7 @@ AND p.data  BETWEEN  $P{DATA_INICIO} AND $P{DATA_FIM}
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="16" isBold="false"/>
 				</textElement>
-				<text><![CDATA[Extrato pra pagamento por colaborador]]></text>
+				<text><![CDATA[Extrato pra conferência dos dias trabalhados]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="345" y="0" width="128" height="20" uuid="0f86baff-6386-4f3f-b3fe-2388707babe8"/>
@@ -146,7 +136,7 @@ AND p.data  BETWEEN  $P{DATA_INICIO} AND $P{DATA_FIM}
 			</textField>
 			<image hAlign="Center">
 				<reportElement x="0" y="0" width="65" height="60" uuid="94883631-a913-43e2-b182-ab8d77d0181e"/>
-				<imageExpression><![CDATA["C:/JavaPleno/rh-pagamento/src/main/resources/image/logo.png"]]></imageExpression>
+				<imageExpression><![CDATA["C:/JavaPleno/rh-colaborador/src/main/resources/image/logo.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="375" y="25" width="50" height="15" uuid="0b3f9342-da78-4cfa-9fc5-2301c4749678"/>
@@ -307,38 +297,11 @@ AND p.data  BETWEEN  $P{DATA_INICIO} AND $P{DATA_FIM}
 	<lastPageFooter>
 		<band height="177">
 			<staticText>
-				<reportElement positionType="Float" x="-1" y="30" width="261" height="101" uuid="1a0d7088-5af7-4865-8be1-41ec5f51fb36"/>
-				<box>
-					<topPen lineWidth="1.1" lineStyle="Dashed"/>
-					<leftPen lineWidth="1.1" lineStyle="Dashed"/>
-					<bottomPen lineWidth="1.1" lineStyle="Dashed"/>
-					<rightPen lineWidth="1.1" lineStyle="Dashed"/>
-				</box>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
-			<staticText>
 				<reportElement positionType="Float" mode="Opaque" x="0" y="147" width="556" height="30" backcolor="#E6E8E9" uuid="36aa233d-4305-48e6-974a-1bbf89bb3c8f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="10" isItalic="true"/>
 				</textElement>
-				<text><![CDATA[Comprovante de pagamento]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="28" y="30" width="230" height="20" uuid="b8427393-d93a-48f7-bcf1-ae770af53f42"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{NomeColaborador}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="-1" y="30" width="31" height="20" uuid="3ce9b006-248e-4cbb-ae1e-f78f31dc0bff"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="12"/>
-				</textElement>
-				<text><![CDATA[Ass:]]></text>
+				<text><![CDATA[Extrato de dias trabalhados]]></text>
 			</staticText>
 		</band>
 	</lastPageFooter>

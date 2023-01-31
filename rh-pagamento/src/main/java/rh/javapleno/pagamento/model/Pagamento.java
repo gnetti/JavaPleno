@@ -22,7 +22,7 @@ public class Pagamento implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long ColaboradorId;
+    private Long colaboradorId;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate data;

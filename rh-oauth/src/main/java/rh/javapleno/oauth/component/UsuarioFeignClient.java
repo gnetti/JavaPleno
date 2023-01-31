@@ -10,7 +10,7 @@ import rh.javapleno.oauth.model.Usuario;
 
 @Component
 @FeignClient(name = "rh-usuario", path = "/usuario")
-public interface UserFeignClientComponent {
+public interface UsuarioFeignClient {
 
 	@GetMapping(value = "/busca")
 	ResponseEntity<Usuario> findByEmail(@RequestParam String email);
