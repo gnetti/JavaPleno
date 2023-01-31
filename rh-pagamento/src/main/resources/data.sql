@@ -1,15 +1,80 @@
 
-INSERT INTO `tb_pagamento` (`id`, `data`, `valor_dia`, `colaborador_id`) VALUES (NULL, '2022-12-02', '180', '1'), (NULL, '2022-12-03', '180', '1'), (NULL, '2022-12-04', '180', '1'), (NULL, '2022-12-09', '180', '1'), (NULL, '2022-12-10', '180', '1'), (NULL, '2022-12-11', '180', '1'), (NULL, '2022-12-16', '180', '1'), (NULL, '2022-12-17', '180', '1'), (NULL, '2022-12-18', '180', '1'), (NULL, '2022-12-24', '180', '1'), (NULL, '2022-12-25', '180', '1'), (NULL, '2022-12-26', '180', '1');
+INSERT INTO tb_profissao (id, descricao, valor_dia) VALUES (NULL, 'Recepcionista', '120');
+INSERT INTO tb_profissao (id, descricao, valor_dia) VALUES (NULL, 'Monitor', '140');
+INSERT INTO tb_profissao (id, descricao, valor_dia) VALUES (NULL, 'Garçon', '160');
+INSERT INTO tb_profissao (id, descricao, valor_dia) VALUES (NULL, 'Cumin', '130');
+INSERT INTO tb_profissao (id, descricao, valor_dia) VALUES (NULL, 'Auxiliar de limpeza', '120');
+INSERT INTO tb_profissao (id, descricao, valor_dia) VALUES (NULL, 'Auxiliar de cozinha ', '120');
+INSERT INTO tb_profissao (id, descricao, valor_dia) VALUES (NULL, 'Auxiliar de confeiteiro', '120');
+INSERT INTO tb_profissao (id, descricao, valor_dia) VALUES (NULL, 'Cozinheiro', '150');
+INSERT INTO tb_profissao (id, descricao, valor_dia) VALUES (NULL, 'Salgadeiro', '150');
+INSERT INTO tb_profissao (id, descricao, valor_dia) VALUES (NULL, 'Fritador', '150');
+INSERT INTO tb_profissao (id, descricao, valor_dia) VALUES (NULL, 'Manobrista', '160');
+INSERT INTO tb_profissao (id, descricao, valor_dia) VALUES (NULL, 'Supervisor', '180');
+INSERT INTO tb_profissao (id, descricao, valor_dia) VALUES (NULL, 'Gerente', '200');
 
-INSERT INTO `tb_pagamento` (`id`, `data`, `valor_dia`, `colaborador_id`) VALUES (NULL, '2022-12-02', '160', '2'), (NULL, '2022-12-03', '160', '2'), (NULL, '2022-12-04', '160', '2'), (NULL, '2022-12-09', '160', '2'), (NULL, '2022-12-10', '160', '2'), (NULL, '2022-12-11', '160', '2'), (NULL, '2022-12-16', '160', '2'), (NULL, '2022-12-17', '160', '2'), (NULL, '2022-12-18', '160', '2'), (NULL, '2022-12-24', '160', '2'), (NULL, '2022-12-25', '160', '2'), (NULL, '2022-12-26', '160', '2');
-
-INSERT INTO `tb_pagamento` (`id`, `data`, `valor_dia`, `colaborador_id`) VALUES (NULL, '2022-12-02', '150', '3'), (NULL, '2022-12-03', '150', '3'), (NULL, '2022-12-04', '150', '3'), (NULL, '2022-12-09', '150', '3'), (NULL, '2022-12-10', '150', '3'), (NULL, '2022-12-11', '150', '3'), (NULL, '2022-12-16', '150', '3'), (NULL, '2022-12-17', '150', '3'), (NULL, '2022-12-18', '150', '3'), (NULL, '2022-12-24', '150', '3'), (NULL, '2022-12-25', '150', '3'), (NULL, '2022-12-26', '150', '3');
-
-INSERT INTO `tb_pagamento` (`id`, `data`, `valor_dia`, `colaborador_id`) VALUES (NULL, '2022-12-02', '130', '4'), (NULL, '2022-12-03', '130', '4'), (NULL, '2022-12-04', '130', '4'), (NULL, '2022-12-09', '130', '4'), (NULL, '2022-12-10', '130', '4'), (NULL, '2022-12-11', '130', '4'), (NULL, '2022-12-16', '130', '4'), (NULL, '2022-12-17', '130', '4'), (NULL, '2022-12-18', '130', '4'), (NULL, '2022-12-24', '130', '4'), (NULL, '2022-12-25', '130', '4'), (NULL, '2022-12-26', '130', '4');
-
-INSERT INTO `tb_pagamento` (`id`, `data`, `valor_dia`, `colaborador_id`) VALUES (NULL, '2022-12-02', '200', '5'), (NULL, '2022-12-03', '200', '5'), (NULL, '2022-12-04', '200', '5'), (NULL, '2022-12-09', '200', '5'), (NULL, '2022-12-10', '200', '5'), (NULL, '2022-12-11', '200', '5'), (NULL, '2022-12-16', '200', '5'), (NULL, '2022-12-17', '200', '5'), (NULL, '2022-12-18', '200', '5'), (NULL, '2022-12-24', '200', '5'), (NULL, '2022-12-25', '200', '5'), (NULL, '2022-12-26', '200', '5');
 
 
-INSERT INTO `tb_cargo` (`id`, `descricao_cargo`, `valor_dia`) VALUES (NULL, 'Recepcionista', '120'), (NULL, 'Monitor', '140'), (NULL, 'Garçon', '160'), (NULL, 'Cumin', '130'), (NULL, 'Auxiliar de limpeza', '120'), (NULL, 'Auxiliar de cozinha ', '120'), (NULL, 'Auxiliar de confeiteiro', '120'), (NULL, 'Cozinheiro', '150'), (NULL, 'Salgadeiro', '150'), (NULL, 'Fritador', '150'), (NULL, 'Manobrista', '160'), (NULL, 'Supervisor', '180'), (NULL, 'Gerente', '200')
+
+
+
+INSERT INTO `tb_pagamento` (`id`, `data`, `valor_dia`, `colaborador_id`) VALUES (NULL, '2022-12-02', '200', '2'), (NULL, '2022-12-03', '200', '2'), (NULL, '2022-12-04', '200', '2'), (NULL, '2022-12-09', '200', '2'), (NULL, '2022-12-10', '200', '2'), (NULL, '2022-12-11', '200', '2'), (NULL, '2022-12-16', '200', '2'), (NULL, '2022-12-17', '200', '2'), (NULL, '2022-12-18', '200', '2'), (NULL, '2022-12-24', '200', '2'), (NULL, '2022-12-25', '200', '2'), (NULL, '2022-12-26', '200', '2');
+
+
+
+INSERT INTO `tb_pagamento` (`id`, `data`, `valor_dia`, `colaborador_id`) VALUES (NULL, '2022-12-02', '160', '3'), (NULL, '2022-12-03', '160', '3'), (NULL, '2022-12-04', '160', '3'), (NULL, '2022-12-09', '160', '3'), (NULL, '2022-12-10', '160', '3'), (NULL, '2022-12-11', '160', '3'), (NULL, '2022-12-16', '160', '3'), (NULL, '2022-12-17', '160', '3'), (NULL, '2022-12-18', '160', '3'), (NULL, '2022-12-24', '160', '3'), (NULL, '2022-12-25', '160', '3'), (NULL, '2022-12-26', '160', '3');
+
+
+
+INSERT INTO `tb_pagamento` (`id`, `data`, `valor_dia`, `colaborador_id`) VALUES (NULL, '2022-12-02', '120', '4'), (NULL, '2022-12-03', '120', '4'), (NULL, '2022-12-04', '120', '4'), (NULL, '2022-12-09', '120', '4'), (NULL, '2022-12-10', '120', '4'), (NULL, '2022-12-11', '120', '4'), (NULL, '2022-12-16', '120', '4'), (NULL, '2022-12-17', '120', '4'), (NULL, '2022-12-18', '120', '4'), (NULL, '2022-12-24', '120', '4'), (NULL, '2022-12-25', '120', '4'), (NULL, '2022-12-26', '120', '4');
+
+
+
+INSERT INTO `tb_pagamento` (`id`, `data`, `valor_dia`, `colaborador_id`) VALUES (NULL, '2022-12-02', '120', '5'), (NULL, '2022-12-03', '120', '5'), (NULL, '2022-12-04', '120', '5'), (NULL, '2022-12-09', '120', '5'), (NULL, '2022-12-10', '120', '5'), (NULL, '2022-12-11', '120', '5'), (NULL, '2022-12-16', '120', '5'), (NULL, '2022-12-17', '120', '5'), (NULL, '2022-12-18', '120', '5'), (NULL, '2022-12-24', '120', '5'), (NULL, '2022-12-25', '120', '5'), (NULL, '2022-12-26', '120', '5');
+
+
+
+INSERT INTO `tb_pagamento` (`id`, `data`, `valor_dia`, `colaborador_id`) VALUES (NULL, '2022-12-02', '120', '6'), (NULL, '2022-12-03', '120', '6'), (NULL, '2022-12-04', '120', '6'), (NULL, '2022-12-09', '120', '6'), (NULL, '2022-12-10', '120', '6'), (NULL, '2022-12-11', '120', '6'), (NULL, '2022-12-16', '120', '6'), (NULL, '2022-12-17', '120', '6'), (NULL, '2022-12-18', '120', '6'), (NULL, '2022-12-24', '120', '6'), (NULL, '2022-12-25', '120', '6'), (NULL, '2022-12-26', '120', '6');
+
+
+
+INSERT INTO `tb_pagamento` (`id`, `data`, `valor_dia`, `colaborador_id`) VALUES (NULL, '2022-12-02', '150', '7'), (NULL, '2022-12-03', '150', '7'), (NULL, '2022-12-04', '150', '7'), (NULL, '2022-12-09', '150', '7'), (NULL, '2022-12-10', '150', '7'), (NULL, '2022-12-11', '150', '7'), (NULL, '2022-12-16', '150', '7'), (NULL, '2022-12-17', '150', '7'), (NULL, '2022-12-18', '150', '7'), (NULL, '2022-12-24', '150', '7'), (NULL, '2022-12-25', '150', '7'), (NULL, '2022-12-26', '150', '7');
+
+
+
+INSERT INTO `tb_pagamento` (`id`, `data`, `valor_dia`, `colaborador_id`) VALUES (NULL, '2022-12-02', '150', '8'), (NULL, '2022-12-03', '150', '8'), (NULL, '2022-12-04', '150', '8'), (NULL, '2022-12-09', '150', '8'), (NULL, '2022-12-10', '150', '8'), (NULL, '2022-12-11', '150', '8'), (NULL, '2022-12-16', '150', '8'), (NULL, '2022-12-17', '150', '8'), (NULL, '2022-12-18', '150', '8'), (NULL, '2022-12-24', '150', '8'), (NULL, '2022-12-25', '150', '8'), (NULL, '2022-12-26', '150', '8');
+
+
+
+INSERT INTO `tb_pagamento` (`id`, `data`, `valor_dia`, `colaborador_id`) VALUES (NULL, '2022-12-02', '160', '9'), (NULL, '2022-12-03', '160', '9'), (NULL, '2022-12-04', '160', '9'), (NULL, '2022-12-09', '160', '9'), (NULL, '2022-12-10', '160', '9'), (NULL, '2022-12-11', '160', '9'), (NULL, '2022-12-16', '160', '9'), (NULL, '2022-12-17', '160', '9'), (NULL, '2022-12-18', '160', '9'), (NULL, '2022-12-24', '160', '9'), (NULL, '2022-12-25', '160', '9'), (NULL, '2022-12-26', '160', '9');
+
+
+
+INSERT INTO `tb_pagamento` (`id`, `data`, `valor_dia`, `colaborador_id`) VALUES (NULL, '2022-12-02','120', '10'), (NULL, '2022-12-03','120', '10'), (NULL, '2022-12-04','120', '10'), (NULL, '2022-12-09','120', '10'), (NULL, '2022-12-10','120', '10'), (NULL, '2022-12-11','120', '10'), (NULL, '2022-12-16','120', '10'), (NULL, '2022-12-17','120', '10'), (NULL, '2022-12-18','120', '10'), (NULL, '2022-12-24','120', '10'), (NULL, '2022-12-25','120', '10'), (NULL, '2022-12-26','120', '10');
+
+
+
+INSERT INTO `tb_pagamento` (`id`, `data`, `valor_dia`, `colaborador_id`) VALUES (NULL, '2022-12-02','140', '11'), (NULL, '2022-12-03','140', '11'), (NULL, '2022-12-04','140', '11'), (NULL, '2022-12-09','140', '11'), (NULL, '2022-12-10','140', '11'), (NULL, '2022-12-11','140', '11'), (NULL, '2022-12-16','140', '11'), (NULL, '2022-12-17','140', '11'), (NULL, '2022-12-18','140', '11'), (NULL, '2022-12-24','140', '11'), (NULL, '2022-12-25','140', '11'), (NULL, '2022-12-26','140', '11');
+
+
+
+INSERT INTO `tb_pagamento` (`id`, `data`, `valor_dia`, `colaborador_id`) VALUES (NULL, '2022-12-02','130', '12'), (NULL, '2022-12-03','130', '12'), (NULL, '2022-12-04','130', '12'), (NULL, '2022-12-09','130', '12'), (NULL, '2022-12-10','130', '12'), (NULL, '2022-12-11','130', '12'), (NULL, '2022-12-16','130', '12'), (NULL, '2022-12-17','130', '12'), (NULL, '2022-12-18','130', '12'), (NULL, '2022-12-24','130', '12'), (NULL, '2022-12-25','130', '12'), (NULL, '2022-12-26','130', '12');
+
+
+
+INSERT INTO `tb_pagamento` (`id`, `data`, `valor_dia`, `colaborador_id`) VALUES (NULL, '2022-12-02','150', '13'), (NULL, '2022-12-03','150', '13'), (NULL, '2022-12-04','150', '13'), (NULL, '2022-12-09','150', '13'), (NULL, '2022-12-10','150', '13'), (NULL, '2022-12-11','150', '13'), (NULL, '2022-12-16','150', '13'), (NULL, '2022-12-17','150', '13'), (NULL, '2022-12-18','150', '13'), (NULL, '2022-12-24','150', '13'), (NULL, '2022-12-25','150', '13'), (NULL, '2022-12-26','150', '13');
+
+
+
+INSERT INTO `tb_pagamento` (`id`, `data`, `valor_dia`, `colaborador_id`) VALUES (NULL, '2022-12-02','180', '14'), (NULL, '2022-12-03','180', '14'), (NULL, '2022-12-04','180', '14'), (NULL, '2022-12-09','180', '14'), (NULL, '2022-12-10','180', '14'), (NULL, '2022-12-11','180', '14'), (NULL, '2022-12-16','180', '14'), (NULL, '2022-12-17','180', '14'), (NULL, '2022-12-18','180', '14'), (NULL, '2022-12-24','180', '14'), (NULL, '2022-12-25','180', '14'), (NULL, '2022-12-26','180', '14');
+
+
+
+
+
+
+
+
+
 
 
