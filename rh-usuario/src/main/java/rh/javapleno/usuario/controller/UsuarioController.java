@@ -13,6 +13,7 @@ import rh.javapleno.usuario.service.UsuarioService;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RefreshScope
 @RestController
 @RequiredArgsConstructor

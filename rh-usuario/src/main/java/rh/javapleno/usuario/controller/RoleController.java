@@ -10,10 +10,10 @@ import rh.javapleno.usuario.service.RoleService;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/role")
-
 public class RoleController {
 
     private final RoleService roleService;
