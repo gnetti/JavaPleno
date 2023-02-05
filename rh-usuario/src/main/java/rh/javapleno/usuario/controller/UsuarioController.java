@@ -30,7 +30,6 @@ public class UsuarioController {
     public Usuario salvar(@RequestBody Usuario usuario) {
         String senhaCriptrografada = passwordEncoder.encode(usuario.getPassword());
         usuario.setPassword(senhaCriptrografada);
-        usuario.getRoles().add(new Role(1L, "ROLE_OPERATOR"));
         return usuarioService.salvar(usuario);
     }
 
