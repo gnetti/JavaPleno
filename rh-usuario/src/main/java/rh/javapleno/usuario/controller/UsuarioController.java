@@ -34,14 +34,8 @@ public class UsuarioController {
     }
 
     @PutMapping
-    public ResponseEntity<Void> alterar(@RequestBody Usuario usuario) {
-        Usuario usuarioEntity = pesquisarId(usuario.getId()).orElseThrow();
-        String senhaCriptrografada = passwordEncoder.encode(usuario.getPassword());
-        usuario.setPassword(senhaCriptrografada);
-        usuarioEntity.setNome(usuario.getNome());
-        usuarioEntity.setEmail(usuario.getEmail());
-        usuarioService.alterar(usuario);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    public ResponseEntity<Usuario> alterar(@RequestBody Usuario usuario) {
+        return new ResponseEntity<>(usuarioService.alterar(usuario), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

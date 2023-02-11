@@ -21,14 +21,23 @@ public class UsuarioService {
 
     private final PasswordEncoder passwordEncoder;
 
-       public Usuario salvar(Usuario usuario) {
+    public Usuario salvar(Usuario usuario) {
         Usuario usuarioModel = usuarioRepository.save(usuario);
         return usuarioModel;
     }
 
-    public void alterar(Usuario usuario) {
-        Usuario usuarioEntity = usuarioRepository.findById(usuario.getId()).orElseThrow();
-        usuarioRepository.save(usuario);
+    public Usuario alterar(Usuario usuario) {
+
+        Usuario usuarioBD = pesquisarId(usuario.getId())
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado."));
+
+        if (usuario.getPassword() == null ||
+                Boolean.TRUE.equals(validaSenhaUsuario(usuarioBD.getPassword(), encode(usuario.getPassword()))))
+            usuario.setPassword(usuarioBD.getPassword());
+        else
+            usuario.setPassword(encode(usuario.getPassword()));
+
+        return usuarioRepository.save(usuario);
     }
 
     public void deletar(Long id) {
@@ -55,5 +64,13 @@ public class UsuarioService {
             log.error("Erro na colsulta", e);
         }
         return ResponseEntity.noContent().build();
+    }
+
+    private Boolean validaSenhaUsuario(String passwordAtual, String passwordNova) {
+        return passwordAtual.equals(passwordNova);
+    }
+
+    private String encode(String password) {
+        return passwordEncoder.encode(password);
     }
 }
