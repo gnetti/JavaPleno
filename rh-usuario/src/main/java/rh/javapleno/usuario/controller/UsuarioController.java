@@ -52,7 +52,7 @@ public class UsuarioController {
 
 
     @GetMapping
-    public List<Usuario> PesquisaTodos() {
+    public List<Usuario> pesquisaTodos() {
         return usuarioService.pesquisaTodos();
     }
 
