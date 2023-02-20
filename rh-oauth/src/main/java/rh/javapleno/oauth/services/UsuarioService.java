@@ -29,6 +29,8 @@ public class UsuarioService implements UserDetailsService {
         if (usuario == null) {
             log.error("Username não encontrado: " + username);
             throw new UsernameNotFoundException("Username encontrado");
+        } else if (usuario.getRoles().isEmpty()) {
+            throw new RuntimeException("Usuário não possui regras para acessar o sistema.");
         }
         log.info("Username encontrado: " + username);
         return usuario;
