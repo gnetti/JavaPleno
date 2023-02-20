@@ -3,14 +3,17 @@ package rh.javapleno.usuario.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import rh.javapleno.usuario.model.Usuario;
+import rh.javapleno.usuario.model.dto.UsuarioDTO;
 import rh.javapleno.usuario.repository.UsuarioRepository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -48,8 +51,11 @@ public class UsuarioService {
         }
     }
 
-    public List<Usuario> pesquisaTodos() {
-        return usuarioRepository.findAll();
+    public List<UsuarioDTO> pesquisaTodos() {
+        return usuarioRepository.findAll()
+                .stream()
+                .map(u -> new ModelMapper().map(u, UsuarioDTO.class))
+                .collect(Collectors.toList());
     }
 
     public Optional<Usuario> pesquisarId(Long id) {
