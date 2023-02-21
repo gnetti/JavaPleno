@@ -31,6 +31,9 @@ public class UsuarioService {
 
     public Usuario alterar(Usuario usuario) {
 
+        if(usuario.getId() == null)
+            throw new RuntimeException("É nescessário informar um id do usuário para atualizar.");
+
         Usuario usuarioBD = pesquisarId(usuario.getId())
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado."));
 
