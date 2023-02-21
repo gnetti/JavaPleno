@@ -46,9 +46,9 @@ public class RelatorioController {
             dataFim = DateUtils.hoje(true);
         }
 
-        var relatorioGerado = relatorioService.gerarRelatorio(id, dataInicio, dataFim);
+        var relatorioGerado = relatorioService.gerarRelatorioRelvalortotaldiastrabporcolab(id, dataInicio, dataFim);
         var headers = new HttpHeaders();
-        var fileName = "colaborador-total.pdf";
+        var fileName = "colaborador-total-pagar.pdf";
 
         headers.setContentDispositionFormData("inline; filename=\"" + fileName + "\"", fileName);
         headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
@@ -74,7 +74,7 @@ public class RelatorioController {
             dataFim = DateUtils.hoje(true);
         }
 
-        var relatorioGerado = relatorioService.gerarRelatorio2(dataInicio, dataFim);
+        var relatorioGerado = relatorioService.gerarRelatorioRelvalortotaldiastrabporcolab(dataInicio, dataFim);
         var headers = new HttpHeaders();
         var fileName = "lista-colaborador-total-pagar.pdf";
 

@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import rh.javapleno.usuario.model.Usuario;
 import rh.javapleno.usuario.model.dto.UsuarioDTO;
+import rh.javapleno.usuario.model.dto.UsuarioNomeDTO;
 import rh.javapleno.usuario.service.UsuarioService;
 
 import java.util.List;
@@ -60,5 +61,9 @@ public class UsuarioController {
     @GetMapping(value = "/busca")
     public ResponseEntity<Usuario> pesquisarEmail(@RequestParam String email) {
         return usuarioService.pesquisarEmail(email);
+    }
+    @GetMapping(value = "/busca/nome")
+    public UsuarioNomeDTO pesquisarEmailNome(@RequestParam String email) {
+        return new ModelMapper().map(usuarioService.pesquisarEmailNome(email), UsuarioNomeDTO.class);
     }
 }

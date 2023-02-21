@@ -29,7 +29,7 @@ public class RelatorioService {
     @Autowired
     private DataSource dataSource;
 
-    public byte[] gerarRelatorio(Long idColaborador, Date dataInicio, Date dataFim) {
+    public byte[] gerarRelatorioRelvalortotaldiastrabporcolab(Long idColaborador, Date dataInicio, Date dataFim) {
         try (
                 Connection connection = dataSource.getConnection();
         ) {
@@ -53,7 +53,7 @@ public class RelatorioService {
         return null;
     }
 
-    public byte[] gerarRelatorio2(Date dataInicio, Date dataFim) {
+    public byte[] gerarRelatorioRelvalortotaldiastrabporcolab(Date dataInicio, Date dataFim) {
         try (
                 Connection connection = dataSource.getConnection();
         ) {
