@@ -6,9 +6,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-import rh.javapleno.oauth.model.Usuario;
 import rh.javapleno.oauth.component.UsuarioFeignClient;
+import rh.javapleno.oauth.model.Usuario;
 
 @Log4j2
 @Service
@@ -35,4 +34,4 @@ public class UsuarioService implements UserDetailsService {
         log.info("Username encontrado: " + username);
         return usuario;
     }
-}
+    }

@@ -82,4 +82,8 @@ public class UsuarioService {
     private String encode(String password) {
         return passwordEncoder.encode(password);
     }
+
+    public Object pesquisarEmailNome(String email) {
+        return usuarioRepository.findByEmail(email);
+    }
 }
