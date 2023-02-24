@@ -1,17 +1,17 @@
 
-INSERT INTO tb_profissao (id, descricao, valor_dia) VALUES (NULL, 'Recepcionista', '120');
-INSERT INTO tb_profissao (id, descricao, valor_dia) VALUES (NULL, 'Monitor', '140');
-INSERT INTO tb_profissao (id, descricao, valor_dia) VALUES (NULL, 'Garçon', '160');
-INSERT INTO tb_profissao (id, descricao, valor_dia) VALUES (NULL, 'Cumin', '130');
-INSERT INTO tb_profissao (id, descricao, valor_dia) VALUES (NULL, 'Auxiliar de limpeza', '120');
-INSERT INTO tb_profissao (id, descricao, valor_dia) VALUES (NULL, 'Auxiliar de cozinha ', '120');
-INSERT INTO tb_profissao (id, descricao, valor_dia) VALUES (NULL, 'Auxiliar de confeiteiro', '120');
-INSERT INTO tb_profissao (id, descricao, valor_dia) VALUES (NULL, 'Cozinheiro', '150');
-INSERT INTO tb_profissao (id, descricao, valor_dia) VALUES (NULL, 'Salgadeiro', '150');
-INSERT INTO tb_profissao (id, descricao, valor_dia) VALUES (NULL, 'Fritador', '150');
-INSERT INTO tb_profissao (id, descricao, valor_dia) VALUES (NULL, 'Manobrista', '160');
-INSERT INTO tb_profissao (id, descricao, valor_dia) VALUES (NULL, 'Supervisor', '180');
-INSERT INTO tb_profissao (id, descricao, valor_dia) VALUES (NULL, 'Gerente', '200');
+INSERT INTO tb_profissao (id, descricao, valor_dia,situacao_profissao) VALUES (NULL, 'Recepcionista', '120',1);
+INSERT INTO tb_profissao (id, descricao, valor_dia,situacao_profissao) VALUES (NULL, 'Monitor', '140',1);
+INSERT INTO tb_profissao (id, descricao, valor_dia,situacao_profissao) VALUES (NULL, 'Garçon', '160',1);
+INSERT INTO tb_profissao (id, descricao, valor_dia,situacao_profissao) VALUES (NULL, 'Cumin', '130',1);
+INSERT INTO tb_profissao (id, descricao, valor_dia,situacao_profissao) VALUES (NULL, 'Auxiliar de limpeza', '120',1);
+INSERT INTO tb_profissao (id, descricao, valor_dia,situacao_profissao) VALUES (NULL, 'Auxiliar de cozinha ', '120',1);
+INSERT INTO tb_profissao (id, descricao, valor_dia,situacao_profissao) VALUES (NULL, 'Auxiliar de confeiteiro', '120',1);
+INSERT INTO tb_profissao (id, descricao, valor_dia,situacao_profissao) VALUES (NULL, 'Cozinheiro', '150',1);
+INSERT INTO tb_profissao (id, descricao, valor_dia,situacao_profissao) VALUES (NULL, 'Salgadeiro', '150',1);
+INSERT INTO tb_profissao (id, descricao, valor_dia,situacao_profissao) VALUES (NULL, 'Fritador', '150',1);
+INSERT INTO tb_profissao (id, descricao, valor_dia,situacao_profissao) VALUES (NULL, 'Manobrista', '160',1);
+INSERT INTO tb_profissao (id, descricao, valor_dia,situacao_profissao) VALUES (NULL, 'Supervisor', '180',1);
+INSERT INTO tb_profissao (id, descricao, valor_dia,situacao_profissao) VALUES (NULL, 'Gerente', '200',1);
 
 
 

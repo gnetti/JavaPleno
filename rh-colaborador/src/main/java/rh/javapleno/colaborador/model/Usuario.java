@@ -10,4 +10,5 @@ public class Usuario {
     private String email;
     private String password;
     private char colaborador;
+    private Endereco endereco;
 }

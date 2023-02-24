@@ -1,46 +1,51 @@
-package rh.javapleno.pagamento.service;
+    package rh.javapleno.pagamento.service;
 
+    import lombok.RequiredArgsConstructor;
+    import org.springframework.stereotype.Service;
+    import rh.javapleno.pagamento.Repository.ProfissaoRepository;
+    import rh.javapleno.pagamento.exceptions.ProfissaoNaoEncontrada;
+    import rh.javapleno.pagamento.model.Profissao;
+    import java.util.List;
+    import java.util.Optional;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import rh.javapleno.pagamento.Repository.ProfissaoRepository;
-import rh.javapleno.pagamento.model.Profissao;
+    @Service
+    @RequiredArgsConstructor
+    public class ProfissaoService {
 
-import java.util.List;
-import java.util.Optional;
+        private final ProfissaoRepository profissaoRepository;
 
-@Service
-@RequiredArgsConstructor
-public class ProfissaoService {
-
-    private final ProfissaoRepository profissaoRepository;
-
-    public Profissao salvar(Profissao profissao) {
-        Profissao roleModel = profissaoRepository.save(profissao);
-        return roleModel;
-    }
-
-    public void alterar(Profissao profissao) {
-        Profissao profissaoEntity = profissaoRepository.findById(profissao.getId()).orElseThrow();
-        profissaoEntity.setDescricao(profissao.getDescricao());
-        profissaoEntity.setValorDia(profissao.getValorDia());
-        profissaoRepository.save(profissao);
-    }
-
-    public void deletar(Long id) {
-        try {
-            profissaoRepository.deleteById(id);
-        } catch (RuntimeException e) {
-            throw new RuntimeException("id não localizado");
+        public Profissao salvar(Profissao profissao) {
+            Profissao roleModel = profissaoRepository.save(profissao);
+            return roleModel;
         }
-    }
 
-    public List<Profissao> pesquisaTodos() {
-        return profissaoRepository.findAll();
-    }
+        public void alterar(Profissao profissao) {
+            Profissao profissaoEntity = profissaoRepository.findById(profissao.getId())
+                    .orElseThrow(() -> new ProfissaoNaoEncontrada("A profissao informada não existe"));
+            profissaoEntity.setDescricao(profissao.getDescricao());
+            profissaoEntity.setValorDia(profissao.getValorDia());
+            profissaoRepository.save(profissao);
+        }
+
+        public void deletar(Long id) {
+            try {
+                profissaoRepository.deleteById(id);
+            } catch (RuntimeException e) {
+                throw new ProfissaoNaoEncontrada("A profissao informada não existe:");
+            }
+        }
+
+        public List<Profissao> pesquisaTodos() {
+
+            return profissaoRepository.findAll();
+        }
 
 
-    public Optional<Profissao> pesquisarId(Long id) {
-        return profissaoRepository.findById(id);
-    }
-}
+        public Profissao pesquisarId(Long id) {
+            Optional<Profissao> profissao = profissaoRepository.findById(id);
+            return profissao.orElseThrow(() -> new ProfissaoNaoEncontrada("A profissao informada não existe:"));
+        }
+
+
+        }
+

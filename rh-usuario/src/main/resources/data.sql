@@ -1,17 +1,17 @@
-INSERT INTO tb_usuario (profissao_id, nome, email, colaborador, password) VALUES (0, 'Gen', 'gen@mail.com', '0', '$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu');
-INSERT INTO tb_usuario (profissao_id, nome, email, colaborador, password) VALUES (1, 'Jos', 'jos@mail.com', '1', '$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu');
-INSERT INTO tb_usuario (profissao_id, nome, email, colaborador, password) VALUES (2, 'Bob', 'bob@mail.com', '1', '$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu');
-INSERT INTO tb_usuario (profissao_id, nome, email, colaborador, password) VALUES (3, 'Will', 'will@mail.com', '1', '$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu');
-INSERT INTO tb_usuario (profissao_id, nome, email, colaborador, password) VALUES (4, 'Mary', 'mary@mail.com', '1', '$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu');
-INSERT INTO tb_usuario (profissao_id, nome, email, colaborador, password) VALUES (5, 'Melissa', 'mellissa@mail.com', '1', '$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu');
-INSERT INTO tb_usuario (profissao_id, nome, email, colaborador, password) VALUES (6, 'Erika', 'erika@mail.com', '1', '$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu');
-INSERT INTO tb_usuario (profissao_id, nome, email, colaborador, password) VALUES (7, 'Jasmin', 'jasmin@mail.com', '1', '$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu');
-INSERT INTO tb_usuario (profissao_id, nome, email, colaborador, password) VALUES (8, 'Helenna', 'helenna@mail.com', '1', '$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu');
-INSERT INTO tb_usuario (profissao_id, nome, email, colaborador, password) VALUES (9, 'Jorge', 'jorge@mail.com', '1', '$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu');
-INSERT INTO tb_usuario (profissao_id, nome, email, colaborador, password) VALUES (10, 'Petter', 'petter@mail.com', '1', '$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu');
-INSERT INTO tb_usuario (profissao_id, nome, email, colaborador, password) VALUES (11, 'Walter', 'walter@mail.com', '1', '$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu');
-INSERT INTO tb_usuario (profissao_id, nome, email, colaborador, password) VALUES (12, 'Hernry', 'henry@mail.com', '1', '$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu');
-INSERT INTO tb_usuario (profissao_id, nome, email, colaborador, password) VALUES (13, 'marta', 'marta@mail.com', '1', '$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu');
+INSERT INTO tb_usuario (profissao_id, nome, email, colaborador, password,situacao_usuario) VALUES (0, 'Gen', 'gen@mail.com', '0', '$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu',1);
+INSERT INTO tb_usuario (profissao_id, nome, email, colaborador, password,situacao_usuario) VALUES (1, 'Jos', 'jos@mail.com', '1', '$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu',1);
+INSERT INTO tb_usuario (profissao_id, nome, email, colaborador, password,situacao_usuario) VALUES (2, 'Bob', 'bob@mail.com', '1', '$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu',1);
+INSERT INTO tb_usuario (profissao_id, nome, email, colaborador, password,situacao_usuario) VALUES (3, 'Will', 'will@mail.com', '1', '$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu',1);
+INSERT INTO tb_usuario (profissao_id, nome, email, colaborador, password,situacao_usuario) VALUES (4, 'Mary', 'mary@mail.com', '1', '$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu',1);
+INSERT INTO tb_usuario (profissao_id, nome, email, colaborador, password,situacao_usuario) VALUES (5, 'Melissa', 'mellissa@mail.com', '1', '$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu',1);
+INSERT INTO tb_usuario (profissao_id, nome, email, colaborador, password,situacao_usuario) VALUES (6, 'Erika', 'erika@mail.com', '1', '$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu',1);
+INSERT INTO tb_usuario (profissao_id, nome, email, colaborador, password,situacao_usuario) VALUES (7, 'Jasmin', 'jasmin@mail.com', '1', '$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu',1);
+INSERT INTO tb_usuario (profissao_id, nome, email, colaborador, password,situacao_usuario) VALUES (8, 'Helenna', 'helenna@mail.com', '1', '$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu',1);
+INSERT INTO tb_usuario (profissao_id, nome, email, colaborador, password,situacao_usuario) VALUES (9, 'Jorge', 'jorge@mail.com', '1', '$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu',1);
+INSERT INTO tb_usuario (profissao_id, nome, email, colaborador, password,situacao_usuario,) VALUES (10, 'Petter', 'petter@mail.com', '1', '$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu',1);
+INSERT INTO tb_usuario (profissao_id, nome, email, colaborador, password,situacao_usuario) VALUES (11, 'Walter', 'walter@mail.com', '1', '$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu',1);
+INSERT INTO tb_usuario (profissao_id, nome, email, colaborador, password,situacao_usuario) VALUES (12, 'Hernry', 'henry@mail.com', '1', '$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu',1);
+INSERT INTO tb_usuario (profissao_id, nome, email, colaborador, password,situacao_usuario) VALUES (13, 'marta', 'marta@mail.com', '1', '$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu',1);
 
 
 

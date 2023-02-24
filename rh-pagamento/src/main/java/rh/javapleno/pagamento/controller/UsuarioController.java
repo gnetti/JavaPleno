@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import rh.javapleno.pagamento.model.Usuario;
 import rh.javapleno.pagamento.service.UsuarioService;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/usuario")
@@ -21,5 +23,7 @@ public class UsuarioController {
     public ResponseEntity<Usuario> pesquisarId(@PathVariable Long id) {
         return usuarioService.pesquisarId(id);
     }
+
+
 
 }

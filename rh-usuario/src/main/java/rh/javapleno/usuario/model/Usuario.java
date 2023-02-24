@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -22,11 +23,17 @@ public class Usuario implements Serializable {
     private Long id;
     private String nome;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String email;
     private String password;
     private char colaborador;
+    @Embedded
+    private Endereco endereco;
     private Long profissaoId;
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name = "situacao_usuario")
+    @NotNull
+    private Situacao situacao;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "tb_role_usuario",
@@ -34,5 +41,6 @@ public class Usuario implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "id_role")
     )
     private Set<Role> roles = new HashSet<>();
+
 
 }

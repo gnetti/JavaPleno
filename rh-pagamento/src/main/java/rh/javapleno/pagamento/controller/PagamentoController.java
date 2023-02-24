@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import rh.javapleno.pagamento.Repository.ProfissaoRepository;
 import rh.javapleno.pagamento.model.Pagamento;
 import rh.javapleno.pagamento.model.Profissao;
 import rh.javapleno.pagamento.model.Usuario;
@@ -24,11 +25,19 @@ public class PagamentoController {
 
     private final UsuarioService usuarioService;
     private final ProfissaoService profissaoService;
+    private final ProfissaoRepository profissaoRepository;
 
     @GetMapping("/profissao/{id}")
-    public Optional<Profissao> pesquisarIdPro(@PathVariable Long id) {
+    @ResponseStatus(HttpStatus.OK)
+    public Profissao pesquisarIdPro(@PathVariable Long id) {
+        Profissao profissaoEntity = profissaoService.pesquisarId(id);
+        return ResponseEntity.ok().body(profissaoEntity).getBody();
+    }
 
-        return profissaoService.pesquisarId(id);
+    @GetMapping("/profissao")
+    public List<Profissao> pesquisarTodosPro() {
+
+        return profissaoService.pesquisaTodos();
     }
 
     @GetMapping("/{id}")
@@ -37,12 +46,11 @@ public class PagamentoController {
     }
 
     @PostMapping("/{id}")
-
     public ResponseEntity<Pagamento> salvar(@RequestBody Pagamento pagamento, @PathVariable Long id) {
         ResponseEntity<Usuario> usuarioResponseEntity = pesquisarId(id);
         pagamento.setColaboradorId(usuarioResponseEntity.getBody().getId());
-        Optional<Profissao> profissaoOptional = pesquisarIdPro(id);
-        pagamento.setValorDia(profissaoOptional.orElseThrow().getValorDia());
+        Profissao profissaoOptional = pesquisarIdPro(id);
+        pagamento.setValorDia(profissaoOptional.getValorDia());
         return ResponseEntity.status(HttpStatus.CREATED).body(pagamentoService.salvar(pagamento));
     }
     @GetMapping(value = "/busca/{id}")
@@ -50,4 +58,14 @@ public class PagamentoController {
         ResponseEntity<Usuario> usuarioResponseEntity = pesquisarId(id);
         return pagamentoService.pesquisarColId(id);
     }
+
+    @PutMapping(value = "alterar")
+    public ResponseEntity<Pagamento> alterar(@PathVariable Long id, @RequestBody Pagamento pagamento){
+
+        pagamentoService.alterar(id,pagamento);
+        return new ResponseEntity<>(HttpStatus.OK);
+
+    }
+
+
 }

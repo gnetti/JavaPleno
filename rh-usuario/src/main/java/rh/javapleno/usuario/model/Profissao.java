@@ -1,2 +1,15 @@
-package rh.javapleno.usuario.model;public class Profissao {
+package rh.javapleno.usuario.model;
+
+import lombok.Data;
+@Data
+public class Profissao{
+
+    private Long id;
+
+    private String descricao;
+
+    private Double valorDia;
+
+    private Situacao situacao;
+
 }

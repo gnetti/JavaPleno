@@ -16,4 +16,9 @@ public class UsuarioService {
     public ResponseEntity<Usuario> pesquisarId(Long id) {
         return usuarioFeignClient.pesquisarId(id);
     }
+
+    public ResponseEntity<Usuario>pesquisarTodos(){
+        return usuarioFeignClient.pesquisarTodos();
+    }
+
 }
