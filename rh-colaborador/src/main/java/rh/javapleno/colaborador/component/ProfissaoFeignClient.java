@@ -12,4 +12,8 @@ public interface ProfissaoFeignClient {
 
     @GetMapping(value = "/profissao/{id}")
     ResponseEntity<Profissao> pesquisarId(@PathVariable("id") Long id);
+
+    @GetMapping(value = "/pesquisarTodos")
+    ResponseEntity<Profissao> pesquisarTodos();
+
 }

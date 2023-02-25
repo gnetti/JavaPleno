@@ -18,7 +18,7 @@ import rh.javapleno.usuario.model.dto.UsuarioDTO;
 @RefreshScope
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value = "usuario")
+@RequestMapping(value = "/usuario")
 public class UsuarioController {
 
     private final UsuarioService usuarioService;

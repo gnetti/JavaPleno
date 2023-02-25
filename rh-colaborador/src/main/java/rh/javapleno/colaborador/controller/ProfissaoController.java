@@ -21,4 +21,9 @@ public class ProfissaoController {
     public ResponseEntity<Profissao> pesquisarId(@PathVariable Long id){
         return profissaoService.pesquisarId(id);
     }
+
+    @GetMapping(value = "pesquisarTodos")
+    public ResponseEntity<Profissao> pesquisarTodos(){
+        return profissaoService.pesquisarTodos();
+    }
 }

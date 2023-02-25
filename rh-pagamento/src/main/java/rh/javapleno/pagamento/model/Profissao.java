@@ -25,7 +25,7 @@ public class Profissao implements Serializable {
    @Column(name ="valor_dia", nullable = true)
     private Double valorDia;
 
-    @Enumerated(EnumType.ORDINAL)
+   @Enumerated(EnumType.ORDINAL)
     @Column(name = "situacao_profissao",nullable = true)
     private Situacao situacao;
 

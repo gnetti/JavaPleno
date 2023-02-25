@@ -24,7 +24,7 @@ public class ProfissaoController {
     }
 
     @GetMapping
-    public List<Profissao> PesquisaTodos() {
+    public List<Profissao> pesquisaTodos() {
         return profissaoService.pesquisaTodos();
     }
 }
