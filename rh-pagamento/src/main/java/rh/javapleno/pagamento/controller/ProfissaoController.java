@@ -17,7 +17,7 @@
 
         private final ProfissaoService profissaoService;
 
-        @PostMapping(value= "/cadastrar")
+        @PostMapping
         public Profissao salvar(@RequestBody Profissao profissao) {
 
             return profissaoService.salvar(profissao);
@@ -35,7 +35,7 @@
             profissaoService.deletar(id);
         }
 
-        @GetMapping(value = "/pesquisarTodos")
+        @GetMapping
         public List<Profissao> pesquisaTodos() {
             return profissaoService.pesquisaTodos();
         }

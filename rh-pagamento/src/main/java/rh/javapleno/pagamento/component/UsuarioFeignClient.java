@@ -18,7 +18,7 @@ public interface UsuarioFeignClient {
     @GetMapping(value = "/{id}")
     ResponseEntity<Usuario> pesquisarId(@PathVariable("id") Long id);
 
-    @GetMapping(value = "pesquisarTodos")
+    @GetMapping
     ResponseEntity<Usuario> pesquisarTodos();
 
 
