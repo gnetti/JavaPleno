@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import rh.javapleno.pagamento.model.Pagamento;
 import rh.javapleno.pagamento.model.Profissao;
 import rh.javapleno.pagamento.model.Usuario;
+import rh.javapleno.pagamento.model.dto.PagamentoDTO;
 import rh.javapleno.pagamento.service.PagamentoService;
 import rh.javapleno.pagamento.service.ProfissaoService;
 import rh.javapleno.pagamento.service.UsuarioService;
@@ -25,6 +26,11 @@ public class PagamentoController {
     private final UsuarioService usuarioService;
     private final ProfissaoService profissaoService;
 
+    @GetMapping
+    public List<PagamentoDTO> PesquisaTodos() {
+        return pagamentoService.pesquisaTodos();
+    }
+
     @GetMapping("/profissao/{id}")
     public Optional<Profissao> pesquisarIdPro(@PathVariable Long id) {
 
@@ -41,8 +47,9 @@ public class PagamentoController {
     public ResponseEntity<Pagamento> salvar(@RequestBody Pagamento pagamento, @PathVariable Long id) {
         return ResponseEntity.status(HttpStatus.CREATED).body(pagamentoService.salvar(pagamento, id));
     }
+
     @GetMapping(value = "/busca/{id}")
-    public ResponseEntity <List<Pagamento>> pesquisarColId(@PathVariable  Long id) {
+    public ResponseEntity<List<Pagamento>> pesquisarColId(@PathVariable Long id) {
         ResponseEntity<Usuario> usuarioResponseEntity = pesquisarId(id);
         return pagamentoService.pesquisarColId(id);
     }

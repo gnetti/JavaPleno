@@ -2,13 +2,16 @@ package rh.javapleno.pagamento.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import rh.javapleno.pagamento.Repository.PagamentoRepository;
 import rh.javapleno.pagamento.model.Pagamento;
 import rh.javapleno.pagamento.model.Profissao;
 import rh.javapleno.pagamento.model.Usuario;
+import rh.javapleno.pagamento.model.dto.PagamentoDTO;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,6 +23,22 @@ public class PagamentoService {
     private final PagamentoRepository pagamentoRepository;
     private final UsuarioService usuarioService;
     private final ProfissaoService profissaoService;
+
+    public List<PagamentoDTO> pesquisaTodos() {
+        List<Pagamento> pagamentoList = pagamentoRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
+        List<PagamentoDTO> pagamentoDTOS = new ArrayList<>();
+        pagamentoList.forEach(pagamento -> {
+            PagamentoDTO pagamentoDTO = new PagamentoDTO();
+            pagamentoDTO.setId(pagamento.getId());
+            pagamentoDTO.setNomeColaborador(usuarioService.pesquisarId(pagamento.getColaboradorId()).getBody().getNome());
+            pagamentoDTO.setData(pagamento.getData());
+            pagamentoDTO.setValorDia(pagamento.getValorDia());
+            pagamentoDTOS.add(pagamentoDTO);
+        });
+
+        return pagamentoDTOS;
+
+    }
 
     public Pagamento salvar(Pagamento pagamento, Long id) {
         ResponseEntity<Usuario> usuarioResponseEntity = usuarioService.pesquisarId(id);
