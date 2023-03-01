@@ -39,11 +39,7 @@ public class PagamentoController {
     @PostMapping("/{id}")
 
     public ResponseEntity<Pagamento> salvar(@RequestBody Pagamento pagamento, @PathVariable Long id) {
-        ResponseEntity<Usuario> usuarioResponseEntity = pesquisarId(id);
-        pagamento.setColaboradorId(usuarioResponseEntity.getBody().getId());
-        Optional<Profissao> profissaoOptional = pesquisarIdPro(id);
-        pagamento.setValorDia(profissaoOptional.orElseThrow().getValorDia());
-        return ResponseEntity.status(HttpStatus.CREATED).body(pagamentoService.salvar(pagamento));
+        return ResponseEntity.status(HttpStatus.CREATED).body(pagamentoService.salvar(pagamento, id));
     }
     @GetMapping(value = "/busca/{id}")
     public ResponseEntity <List<Pagamento>> pesquisarColId(@PathVariable  Long id) {

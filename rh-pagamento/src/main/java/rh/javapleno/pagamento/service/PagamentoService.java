@@ -6,8 +6,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import rh.javapleno.pagamento.Repository.PagamentoRepository;
 import rh.javapleno.pagamento.model.Pagamento;
+import rh.javapleno.pagamento.model.Profissao;
+import rh.javapleno.pagamento.model.Usuario;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -15,12 +18,18 @@ import java.util.List;
 public class PagamentoService {
 
     private final PagamentoRepository pagamentoRepository;
+    private final UsuarioService usuarioService;
+    private final ProfissaoService profissaoService;
 
-    public  Pagamento salvar(Pagamento trabalho) {
-        return pagamentoRepository.save(trabalho);
+    public Pagamento salvar(Pagamento pagamento, Long id) {
+        ResponseEntity<Usuario> usuarioResponseEntity = usuarioService.pesquisarId(id);
+        Optional<Profissao> profissaoOptional = profissaoService.pesquisarId(usuarioResponseEntity.getBody().getProfissaoId());
+        pagamento.setColaboradorId(usuarioResponseEntity.getBody().getId());
+        pagamento.setValorDia(profissaoOptional.orElseThrow().getValorDia());
+        return pagamentoRepository.save(pagamento);
     }
 
-    public ResponseEntity <List<Pagamento>> pesquisarColId(Long id) {
+    public ResponseEntity<List<Pagamento>> pesquisarColId(Long id) {
         try {
             List<Pagamento> pagamento = (pagamentoRepository.findByColaboradorId(id));
             return ResponseEntity.ok(pagamento);
