@@ -27,7 +27,6 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 public class UsuarioDTO {
 
     @Id
