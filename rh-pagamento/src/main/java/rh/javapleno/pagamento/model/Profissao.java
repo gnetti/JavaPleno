@@ -1,10 +1,9 @@
 package rh.javapleno.pagamento.model;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 @Data
@@ -19,8 +18,15 @@ public class Profissao implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message= "o campo não deve ser vazio")
     private String descricao;
 
+    @Column(name ="valor_dia", nullable = true)
     private Double valorDia;
+
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name = "situacao_profissao",nullable = true)
+    private Situacao situacao;
+
 
 }
