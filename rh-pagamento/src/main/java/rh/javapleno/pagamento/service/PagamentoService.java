@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import rh.javapleno.pagamento.Repository.PagamentoRepository;
 import rh.javapleno.pagamento.model.Pagamento;
 import rh.javapleno.pagamento.model.Profissao;
+import rh.javapleno.pagamento.model.Situacao;
 import rh.javapleno.pagamento.model.Usuario;
 import rh.javapleno.pagamento.model.dto.PagamentoDTO;
 
@@ -34,6 +35,7 @@ public class PagamentoService {
             pagamentoDTO.setColaboradorId(pagamento.getColaboradorId());
             pagamentoDTO.setData(pagamento.getData());
             pagamentoDTO.setValorDia(pagamento.getValorDia());
+            pagamentoDTO.setSituacao(Situacao.ATIVO);
             pagamentoDTOS.add(pagamentoDTO);
         });
 
