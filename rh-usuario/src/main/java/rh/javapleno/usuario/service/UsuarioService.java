@@ -129,4 +129,18 @@ public class UsuarioService {
         Optional<Usuario> usuario = usuarioRepository.findByIdAndColaboradorAndSituacao(id,'1', Situacao.ATIVO);
         return usuario.orElseThrow(() -> new UsuarioNaoEncontrado("O colaborador informado não existe"));
     }
+
+    public ResponseEntity<Optional<Usuario>> pesquisarEmailLogin(String email) {
+        try {
+            Optional<Optional<Usuario>> usuario = Optional.ofNullable(usuarioRepository.findByEmailAndSituacao(email,Situacao.ATIVO));
+            return ResponseEntity.ok(usuario.get());
+
+        } catch (RuntimeException e) {
+
+            new UsuarioNaoEncontrado("Usuário não Encontrado");
+
+        }
+        return ResponseEntity.noContent().build();
+
+    }
 }

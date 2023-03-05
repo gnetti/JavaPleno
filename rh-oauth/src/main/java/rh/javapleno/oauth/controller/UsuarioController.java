@@ -17,7 +17,7 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
-    @GetMapping(value = "/busca")
+    @GetMapping(value = "/login")
     public ResponseEntity<Usuario> findByEmail(@RequestParam String email) {
         try {
             Usuario usuario = usuarioService.findByEmail(email);

@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
-	Usuario findByEmail(String email);
+    Usuario findByEmail(String email);
 
     @Query(" select u from Usuario u where u.nome like %:nome% and u.colaborador=1 and u.situacao=1")
     List<Usuario> findByNomeLikeColaborador(@Param("nome") String nome);
@@ -21,4 +21,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
     Optional<Usuario> findByIdAndColaboradorAndSituacao(Long id, char colaborador, Situacao situacao);
 
-   }
+    Optional<Usuario> findByEmailAndSituacao(String email, Situacao situacao);
+
+}

@@ -12,6 +12,6 @@ import rh.javapleno.oauth.model.Usuario;
 @FeignClient(name = "rh-usuario", path = "/usuario")
 public interface UsuarioFeignClient {
 
-	@GetMapping(value = "/busca")
+	@GetMapping(value = "/login")
 	ResponseEntity<Usuario> findByEmail(@RequestParam String email);
 }

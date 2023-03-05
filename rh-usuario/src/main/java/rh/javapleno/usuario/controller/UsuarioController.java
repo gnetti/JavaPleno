@@ -12,6 +12,7 @@ import rh.javapleno.usuario.model.dto.UsuarioDTO;
 import rh.javapleno.usuario.service.UsuarioService;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin
 @RefreshScope
@@ -60,6 +61,11 @@ public class UsuarioController {
     @GetMapping(value = "/busca")
     public ResponseEntity<Usuario> pesquisarEmail(@RequestParam String email) {
         return usuarioService.pesquisarEmail(email);
+    }
+
+    @GetMapping(value = "/login")
+    public ResponseEntity<Optional<Usuario>> pesquisarEmailLogin(@RequestParam String email) {
+        return usuarioService.pesquisarEmailLogin(email);
     }
 
     @GetMapping(value = "/busca/nome")
