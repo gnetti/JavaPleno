@@ -48,6 +48,7 @@ public class PagamentoService {
         Optional<Profissao> profissaoOptional = profissaoService.pesquisarId(usuarioResponseEntity.getBody().getProfissaoId());
         pagamento.setColaboradorId(usuarioResponseEntity.getBody().getId());
         pagamento.setValorDia(profissaoOptional.orElseThrow().getValorDia());
+        pagamento.setSituacao(Situacao.ATIVO);
         return pagamentoRepository.save(pagamento);
     }
 

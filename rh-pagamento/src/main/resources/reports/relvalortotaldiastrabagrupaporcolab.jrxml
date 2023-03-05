@@ -3,6 +3,8 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relvalortotaldiastrabporcolab" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4eedbb89-b4f6-4469-9ab6-f642a1688cf7">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="JavaPleno"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="243"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="746"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
@@ -68,25 +70,11 @@ SUM(p.valor_dia) AS ValorTotal
 FROM tb_usuario  AS u
 JOIN tb_pagamento AS p ON u.id = p.colaborador_id
 JOIN tb_profissao as pr ON pr.id = u.profissao_id
-WHERE 1 = 1 AND  p.data  BETWEEN  $P{DATA_INICIO} AND $P{DATA_FIM}
+WHERE 1 = 1 AND p.situacao_pagamento = 1 AND  p.data  BETWEEN  $P{DATA_INICIO} AND $P{DATA_FIM}
 AND u.colaborador = '1'
 
 GROUP BY  u.id, u.nome
-ORDER BY u.id
-
-
-
-
-
-
-
-
-
-
-
-
-
-]]>
+ORDER BY u.id]]>
 	</queryString>
 	<field name="IdColaborador" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.name" value="id"/>
