@@ -31,6 +31,7 @@ public class PagamentoService {
             PagamentoDTO pagamentoDTO = new PagamentoDTO();
             pagamentoDTO.setId(pagamento.getId());
             pagamentoDTO.setNomeColaborador(usuarioService.pesquisarId(pagamento.getColaboradorId()).getBody().getNome());
+            pagamentoDTO.setColaboradorId(pagamento.getColaboradorId());
             pagamentoDTO.setData(pagamento.getData());
             pagamentoDTO.setValorDia(pagamento.getValorDia());
             pagamentoDTOS.add(pagamentoDTO);

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 import rh.javapleno.usuario.exceptions.UsuarioNaoEncontrado;
 import rh.javapleno.usuario.model.Endereco;
 import rh.javapleno.usuario.model.Situacao;
@@ -18,8 +19,6 @@ import rh.javapleno.usuario.repository.UsuarioRepository;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
-import org.springframework.util.ObjectUtils;
 
 @Service
 @RequiredArgsConstructor
@@ -121,9 +120,13 @@ public class UsuarioService {
     }
 
     public List<Usuario> pesquisaNome(String nome) {
-        List<Usuario> usuario = usuarioRepository.findByNomeLike(nome);
+        List<Usuario> usuario = usuarioRepository.findByNomeLikeColaborador(nome);
         return usuario;
     }
 
 
+    public Usuario pesquisarIdColaborador(Long id) {
+        Optional<Usuario> usuario = usuarioRepository.findByIdAndColaboradorAndSituacao(id,'1', Situacao.ATIVO);
+        return usuario.orElseThrow(() -> new UsuarioNaoEncontrado("O colaborador informado não existe"));
+    }
 }

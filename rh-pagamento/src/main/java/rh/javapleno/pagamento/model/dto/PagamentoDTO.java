@@ -14,6 +14,8 @@ public class PagamentoDTO {
 
     private String nomeColaborador;
 
+    private Long colaboradorId;
+
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate data;
 

@@ -78,4 +78,9 @@ public class UsuarioController {
         return listUsuario;
     }
 
+    @GetMapping(value = "/colaborador/{id}")
+    public UsuarioDTO pesquisarIdColaborador(@PathVariable Long id) {
+        return new ModelMapper().map(usuarioService.pesquisarIdColaborador(id), UsuarioDTO.class);
+    }
+
 }
