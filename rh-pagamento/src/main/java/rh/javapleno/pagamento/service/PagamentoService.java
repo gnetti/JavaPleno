@@ -6,6 +6,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import rh.javapleno.pagamento.Repository.PagamentoRepository;
+import rh.javapleno.pagamento.exceptions.PagamentoNaoEncontrado;
 import rh.javapleno.pagamento.model.Pagamento;
 import rh.javapleno.pagamento.model.Profissao;
 import rh.javapleno.pagamento.model.Situacao;
@@ -47,7 +48,6 @@ public class PagamentoService {
         ResponseEntity<Usuario> usuarioResponseEntity = usuarioService.pesquisarId(id);
         Optional<Profissao> profissaoOptional = profissaoService.pesquisarId(usuarioResponseEntity.getBody().getProfissaoId());
         pagamento.setColaboradorId(usuarioResponseEntity.getBody().getId());
-        pagamento.setValorDia(profissaoOptional.orElseThrow().getValorDia());
         pagamento.setSituacao(Situacao.ATIVO);
         return pagamentoRepository.save(pagamento);
     }
@@ -61,4 +61,30 @@ public class PagamentoService {
         }
         return ResponseEntity.noContent().build();
     }
+
+    public Pagamento deletar(Long id) {
+        Pagamento pagamentoEntity = pagamentoRepository.findById(id).orElseThrow();
+        pagamentoEntity.setSituacao(Situacao.INATIVO);
+        return pagamentoRepository.save(pagamentoEntity);
+    }
+
+    public Pagamento pesquisarIdLan(Long id) {
+
+        return pagamentoRepository.findById(id).orElseThrow(() -> new PagamentoNaoEncontrado("Pagamento não encontrado!"));
+    }
+
+    public Pagamento alterar(Pagamento pagamento) {
+        validaPagamento(pagamento);
+        return pagamentoRepository.save(pagamento);
+    }
+
+    private void validaPagamento(Pagamento pagamento) {
+        if (pagamento.getId() != null) {
+            pesquisarIdLan(pagamento.getId());
+        } else {
+            throw new PagamentoNaoEncontrado("Pagamento não encontrado!");
+        }
+    }
 }
+
+

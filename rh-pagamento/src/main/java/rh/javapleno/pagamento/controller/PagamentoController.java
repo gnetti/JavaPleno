@@ -53,4 +53,20 @@ public class PagamentoController {
         ResponseEntity<Usuario> usuarioResponseEntity = pesquisarId(id);
         return pagamentoService.pesquisarColId(id);
     }
+
+    @DeleteMapping(value = "/{id}")
+    public Pagamento deletar(@PathVariable Long id) {
+        return pagamentoService.deletar(id);
+    }
+
+    @GetMapping("/lancamento/{id}")
+    public Pagamento pesquisarIdLan(@PathVariable Long id) {
+        return pagamentoService.pesquisarIdLan(id);
+    }
+
+    @PutMapping
+    public ResponseEntity<Pagamento> alterar(@RequestBody Pagamento pagamento) {
+        return ResponseEntity.status(HttpStatus.OK).body(pagamentoService.alterar(pagamento));
+    }
 }
+
