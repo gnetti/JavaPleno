@@ -36,7 +36,7 @@ public class PagamentoService {
             pagamentoDTO.setColaboradorId(pagamento.getColaboradorId());
             pagamentoDTO.setData(pagamento.getData());
             pagamentoDTO.setValorDia(pagamento.getValorDia());
-            pagamentoDTO.setSituacao(Situacao.ATIVO);
+            pagamentoDTO.setSituacao(pagamento.getSituacao());
             pagamentoDTOS.add(pagamentoDTO);
         });
 
@@ -62,9 +62,9 @@ public class PagamentoService {
         return ResponseEntity.noContent().build();
     }
 
-    public Pagamento deletar(Long id) {
+    public Pagamento alterarSituacao(Long id, Situacao situacao) {
         Pagamento pagamentoEntity = pagamentoRepository.findById(id).orElseThrow();
-        pagamentoEntity.setSituacao(Situacao.INATIVO);
+        pagamentoEntity.setSituacao(situacao);
         return pagamentoRepository.save(pagamentoEntity);
     }
 
