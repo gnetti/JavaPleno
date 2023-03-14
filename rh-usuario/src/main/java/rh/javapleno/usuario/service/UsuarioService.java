@@ -143,4 +143,8 @@ public class UsuarioService {
         return ResponseEntity.noContent().build();
 
     }
+    public Usuario pesquisarEmailColaborador(String email) {
+        Optional<Usuario> usuario = usuarioRepository.findByEmailAndColaboradorAndSituacao(email,'1', Situacao.ATIVO);
+        return usuario.orElseThrow(() -> new UsuarioNaoEncontrado("O colaborador informado não existe"));
+    }
 }
