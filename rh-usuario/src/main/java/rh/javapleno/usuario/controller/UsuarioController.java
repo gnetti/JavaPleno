@@ -83,10 +83,6 @@ public class UsuarioController {
     public UsuarioDTO pesquisarIdColaborador(@PathVariable Long id) {
         return new ModelMapper().map(usuarioService.pesquisarIdColaborador(id), UsuarioDTO.class);
     }
-    @GetMapping(value = "/colaborador/email")
-    public UsuarioDTO pesquisarIdColaborador(@RequestParam String email) {
-        return new ModelMapper().map(usuarioService.pesquisarEmailColaborador(email), UsuarioDTO.class);
-    }
 
     @GetMapping(value = "/colaborador/email")
     public UsuarioDTO pesquisarIdColaborador(@RequestParam String email) {
