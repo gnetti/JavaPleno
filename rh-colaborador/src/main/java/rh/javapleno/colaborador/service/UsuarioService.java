@@ -16,4 +16,8 @@ public class UsuarioService {
     public ResponseEntity<Usuario> pesquisarId(Long id) {
         return usuarioFeignClient.pesquisarId(id);
     }
+
+    public Object pesquisarEmail(String email) {
+        return usuarioFeignClient.pesquisarEmail(email);
+    }
 }

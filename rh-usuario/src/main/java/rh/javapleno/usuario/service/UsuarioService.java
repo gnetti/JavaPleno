@@ -126,13 +126,19 @@ public class UsuarioService {
 
 
     public Usuario pesquisarIdColaborador(Long id) {
-        Optional<Usuario> usuario = usuarioRepository.findByIdAndColaboradorAndSituacao(id,'1', Situacao.ATIVO);
+        Optional<Usuario> usuario = usuarioRepository.findByIdAndColaboradorAndSituacao(id, '1', Situacao.ATIVO);
         return usuario.orElseThrow(() -> new UsuarioNaoEncontrado("O colaborador informado não existe"));
     }
 
-    public ResponseEntity<Optional<Usuario>> pesquisarEmailLogin(String email) {
+
+    public Usuario pesquisarEmailColaborador(String email) {
+        Optional<Usuario> usuario = usuarioRepository.findByEmailAndColaboradorAndSituacao(email, '1', Situacao.ATIVO);
+        return usuario.orElseThrow(() -> new UsuarioNaoEncontrado("O colaborador informado não existe"));
+    }
+
+    public ResponseEntity<Optional<Usuario>> pesquisarLogin(String email) {
         try {
-            Optional<Optional<Usuario>> usuario = Optional.ofNullable(usuarioRepository.findByEmailAndSituacao(email,Situacao.ATIVO));
+            Optional<Optional<Usuario>> usuario = Optional.ofNullable(usuarioRepository.findByEmailAndSituacao(email, Situacao.ATIVO));
             return ResponseEntity.ok(usuario.get());
 
         } catch (RuntimeException e) {
@@ -143,4 +149,10 @@ public class UsuarioService {
         return ResponseEntity.noContent().build();
 
     }
+
+    public Usuario pesquisarEmailLogin(String email) {
+        Optional<Usuario> usuario = usuarioRepository.findByEmailAndSituacao(email, Situacao.ATIVO);
+        return usuario.orElseThrow(() -> new UsuarioNaoEncontrado("O usuário informado não existe"));
+    }
+
 }

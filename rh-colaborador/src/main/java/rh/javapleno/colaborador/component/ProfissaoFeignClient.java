@@ -17,7 +17,7 @@ public interface ProfissaoFeignClient {
 
 
 
-    @GetMapping(value = "/pesquisarTodos")
+    @GetMapping
     ResponseEntity<Profissao> pesquisarTodos();
      
 }

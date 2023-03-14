@@ -63,11 +63,6 @@ public class UsuarioController {
         return usuarioService.pesquisarEmail(email);
     }
 
-    @GetMapping(value = "/login")
-    public ResponseEntity<Optional<Usuario>> pesquisarEmailLogin(@RequestParam String email) {
-        return usuarioService.pesquisarEmailLogin(email);
-    }
-
     @GetMapping(value = "/busca/nome")
     public Usuario pesquisarEmailNome(@RequestParam String email) {
         return new ModelMapper().map(usuarioService.pesquisarEmailNome(email), Usuario.class);
@@ -89,4 +84,17 @@ public class UsuarioController {
         return new ModelMapper().map(usuarioService.pesquisarIdColaborador(id), UsuarioDTO.class);
     }
 
+    @GetMapping(value = "/colaborador/email")
+    public UsuarioDTO pesquisarIdColaborador(@RequestParam String email) {
+        return new ModelMapper().map(usuarioService.pesquisarEmailColaborador(email), UsuarioDTO.class);
+    }
+    @GetMapping(value = "/login")
+    public ResponseEntity<Optional<Usuario>> pesquisarLogin(@RequestParam String email) {
+        return usuarioService.pesquisarLogin(email);
+    }
+
+    @GetMapping(value = "/login/email")
+    public UsuarioDTO pesquisarEmailLogin(@RequestParam String email) {
+        return new ModelMapper().map(usuarioService.pesquisarEmailLogin(email), UsuarioDTO.class);
+    }
 }
