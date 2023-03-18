@@ -51,7 +51,6 @@ public class PagamentoController {
 
     @GetMapping(value = "/busca/{id}")
     public ResponseEntity<List<Pagamento>> pesquisarColId(@PathVariable Long id) {
-        ResponseEntity<Usuario> usuarioResponseEntity = pesquisarId(id);
         return pagamentoService.pesquisarColId(id);
     }
 
