@@ -73,9 +73,38 @@ public class PagamentoService {
         return ResponseEntity.noContent().build();
     }
 
+    public ResponseEntity<List<PagamentoDTO>> pesquisarStatus(char status) {
+        try {
+            List<Pagamento> pagamentoList = pagamentoRepository.findByStatusAndSituacaoOrderByIdDesc(status, Situacao.ATIVO);
+            List<PagamentoDTO> pagamentoDTOS = new ArrayList<>();
+            pagamentoList.forEach(pagamento -> {
+                PagamentoDTO pagamentoDTO = new PagamentoDTO();
+                pagamentoDTO.setId(pagamento.getId());
+                pagamentoDTO.setNomeColaborador(usuarioService.pesquisarId(pagamento.getColaboradorId()).getBody().getNome());
+                pagamentoDTO.setColaboradorId(pagamento.getColaboradorId());
+                pagamentoDTO.setData(pagamento.getData());
+                pagamentoDTO.setValorDia(pagamento.getValorDia());
+                pagamentoDTO.setSituacao(pagamento.getSituacao());
+                pagamentoDTO.setStatus(pagamento.getStatus());
+                pagamentoDTOS.add(pagamentoDTO);
+            });
+            return ResponseEntity.ok(pagamentoDTOS);
+        } catch (RuntimeException e) {
+            log.error("Erro na colsulta", e);
+        }
+        return ResponseEntity.noContent().build();
+    }
+
+
     public Pagamento alterarSituacao(Long id, Situacao situacao) {
         Pagamento pagamentoEntity = pagamentoRepository.findById(id).orElseThrow();
         pagamentoEntity.setSituacao(situacao);
+        return pagamentoRepository.save(pagamentoEntity);
+    }
+
+    public Pagamento alterarStatus(Long id, char status) {
+        Pagamento pagamentoEntity = pagamentoRepository.findById(id).orElseThrow();
+        pagamentoEntity.setStatus(status);
         return pagamentoRepository.save(pagamentoEntity);
     }
 

@@ -53,10 +53,19 @@ public class PagamentoController {
     public ResponseEntity<List<PagamentoDTO>> pesquisarColId(@PathVariable Long id) {
         return pagamentoService.pesquisarColId(id);
     }
+    @GetMapping(value = "/busca/status/{status}")
+    public ResponseEntity<List<PagamentoDTO>> pesquisarStatus(@PathVariable char status) {
+        return pagamentoService.pesquisarStatus(status);
+    }
 
     @PatchMapping(value = "/id/{id}/situacao/{situacao}")
     public Pagamento alterarSituacao(@PathVariable Long id, @PathVariable Situacao situacao) {
         return pagamentoService.alterarSituacao(id,situacao);
+    }
+
+    @PutMapping(value = "/id/{id}/status/{status}")
+    public Pagamento alterarStatus(@PathVariable Long id, @PathVariable char status) {
+        return pagamentoService.alterarStatus(id,status);
     }
 
     @GetMapping("/lancamento/{id}")
