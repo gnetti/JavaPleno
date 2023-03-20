@@ -2,10 +2,9 @@ package rh.javapleno.colaborador.component;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import rh.javapleno.colaborador.model.Pagamento;
+import org.springframework.web.bind.annotation.*;
 import rh.javapleno.colaborador.model.Profissao;
+import rh.javapleno.colaborador.model.dto.PagamentoDTO;
 
 import java.util.List;
 
@@ -17,6 +16,6 @@ public interface PagamentoFeignClient {
     ResponseEntity<Profissao> pesquisarId(@PathVariable("id") Long id);
 
     @GetMapping(value = "/busca/{id}")
-    ResponseEntity<List<Pagamento>> pesquisarColId(@PathVariable Long id);
+    ResponseEntity<List<PagamentoDTO>> pesquisarColId(@PathVariable Long id);
 
-}
+  }

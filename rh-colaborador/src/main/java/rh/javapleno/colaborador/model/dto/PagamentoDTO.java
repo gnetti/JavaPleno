@@ -1,22 +1,19 @@
-package rh.javapleno.colaborador.model;
+package rh.javapleno.colaborador.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import rh.javapleno.colaborador.model.Situacao;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.io.Serializable;
 import java.time.LocalDate;
 
 @Data
-
-public class Pagamento implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class PagamentoDTO {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private String nomeColaborador;
 
     private Long colaboradorId;
 

@@ -50,7 +50,7 @@ public class PagamentoController {
     }
 
     @GetMapping(value = "/busca/{id}")
-    public ResponseEntity<List<Pagamento>> pesquisarColId(@PathVariable Long id) {
+    public ResponseEntity<List<PagamentoDTO>> pesquisarColId(@PathVariable Long id) {
         return pagamentoService.pesquisarColId(id);
     }
 

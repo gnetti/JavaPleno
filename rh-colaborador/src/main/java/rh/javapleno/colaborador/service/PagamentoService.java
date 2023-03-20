@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import rh.javapleno.colaborador.component.PagamentoFeignClient;
-import rh.javapleno.colaborador.model.Pagamento;
+import rh.javapleno.colaborador.model.dto.PagamentoDTO;
 
 import java.util.List;
 
@@ -14,10 +14,7 @@ public class PagamentoService {
 
     private final PagamentoFeignClient pagamentoFeignClient;
 
-    public ResponseEntity<List<Pagamento>> pesquisarColId(Long id) {
-
-        ResponseEntity<List<Pagamento>> pagamento = (pagamentoFeignClient.pesquisarColId(id));
-        return pagamento;
+    public ResponseEntity<List<PagamentoDTO>> pesquisarColId(Long id) {
+                return pagamentoFeignClient.pesquisarColId(id);
     }
-
 }

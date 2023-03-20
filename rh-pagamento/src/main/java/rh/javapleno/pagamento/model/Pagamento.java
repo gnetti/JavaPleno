@@ -30,7 +30,9 @@ public class Pagamento implements Serializable {
     private Double valorDia;
 
     @Enumerated(EnumType.ORDINAL)
-    @Column(name = "situacao_pagamento",nullable = true)
+    @Column(name = "situacao_pagamento", nullable = true)
     private Situacao situacao;
+
+    private char status;
 
 }

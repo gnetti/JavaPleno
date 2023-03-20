@@ -52,10 +52,21 @@ public class PagamentoService {
         return pagamentoRepository.save(pagamento);
     }
 
-    public ResponseEntity<List<Pagamento>> pesquisarColId(Long id) {
+    public ResponseEntity<List<PagamentoDTO>> pesquisarColId(Long id) {
         try {
-            List<Pagamento> pagamento = (pagamentoRepository.findByColaboradorId(id));
-            return ResponseEntity.ok(pagamento);
+            List<Pagamento> pagamentoList = pagamentoRepository.findByColaboradorId(id);
+            List<PagamentoDTO> pagamentoDTOS = new ArrayList<>();
+            pagamentoList.forEach(pagamento -> {
+                PagamentoDTO pagamentoDTO = new PagamentoDTO();
+                pagamentoDTO.setId(pagamento.getId());
+                pagamentoDTO.setNomeColaborador(usuarioService.pesquisarId(pagamento.getColaboradorId()).getBody().getNome());
+                pagamentoDTO.setColaboradorId(pagamento.getColaboradorId());
+                pagamentoDTO.setData(pagamento.getData());
+                pagamentoDTO.setValorDia(pagamento.getValorDia());
+                pagamentoDTO.setSituacao(pagamento.getSituacao());
+                pagamentoDTOS.add(pagamentoDTO);
+            });
+            return ResponseEntity.ok(pagamentoDTOS);
         } catch (RuntimeException e) {
             log.error("Erro na colsulta", e);
         }
