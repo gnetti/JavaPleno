@@ -54,7 +54,7 @@ public class PagamentoService {
 
     public ResponseEntity<List<PagamentoDTO>> pesquisarColId(Long id) {
         try {
-            List<Pagamento> pagamentoList = pagamentoRepository.findByColaboradorId(id);
+            List<Pagamento> pagamentoList = pagamentoRepository.findByColaboradorIdOrderByIdDesc(id);
             List<PagamentoDTO> pagamentoDTOS = new ArrayList<>();
             pagamentoList.forEach(pagamento -> {
                 PagamentoDTO pagamentoDTO = new PagamentoDTO();
