@@ -49,6 +49,12 @@ public class PagamentoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(pagamentoService.salvar(pagamento, id));
     }
 
+    @PatchMapping("/colaborador/{id}")
+
+    public ResponseEntity<Pagamento> salvarParaColaborador(@RequestBody Pagamento pagamento, @PathVariable Long id) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(pagamentoService.salvar(pagamento, id));
+    }
+
     @GetMapping(value = "/busca/{id}")
     public ResponseEntity<List<PagamentoDTO>> pesquisarColId(@PathVariable Long id) {
         return pagamentoService.pesquisarColId(id);
