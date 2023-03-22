@@ -24,4 +24,6 @@ public class PagamentoDTO {
 
     private Situacao situacao;
 
+    private char status;
+
 }

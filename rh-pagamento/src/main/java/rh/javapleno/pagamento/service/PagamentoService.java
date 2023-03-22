@@ -64,6 +64,7 @@ public class PagamentoService {
                 pagamentoDTO.setData(pagamento.getData());
                 pagamentoDTO.setValorDia(pagamento.getValorDia());
                 pagamentoDTO.setSituacao(pagamento.getSituacao());
+                pagamentoDTO.setStatus(pagamento.getStatus());
                 pagamentoDTOS.add(pagamentoDTO);
             });
             return ResponseEntity.ok(pagamentoDTOS);

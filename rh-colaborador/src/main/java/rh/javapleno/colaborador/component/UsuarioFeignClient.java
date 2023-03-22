@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import rh.javapleno.colaborador.model.Profissao;
 import rh.javapleno.colaborador.model.Usuario;
+import rh.javapleno.colaborador.model.dto.UsuarioDTO;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,4 +26,7 @@ public interface UsuarioFeignClient {
 
     @GetMapping(value = "/colaborador/email")
     ResponseEntity<Optional<Usuario>> pesquisarEmail(@RequestParam String email);
+
+    @GetMapping(value = "/colaborador/{id}")
+    UsuarioDTO pesquisarIdColaborador(@PathVariable Long id);
 }
