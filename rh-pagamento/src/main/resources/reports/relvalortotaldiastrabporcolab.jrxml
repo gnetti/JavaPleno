@@ -73,7 +73,7 @@
 
 FROM tb_usuario AS u 
 JOIN tb_pagamento AS p ON u.id = p.colaborador_id
-WHERE 1 = 1 AND u.colaborador = '1' AND  p.situacao_pagamento = 1
+WHERE 1 = 1 AND u.colaborador = '1' AND  p.situacao_pagamento = 1 AND p.status =1
 AND (u.id = $P{ID_COLABORADOR} or  $P{ID_COLABORADOR} IS NULL )
 AND p.data  BETWEEN  $P{DATA_INICIO} AND $P{DATA_FIM}]]>
 	</queryString>
