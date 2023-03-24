@@ -4,7 +4,9 @@ package rh.javapleno.pagamento.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import rh.javapleno.pagamento.Repository.ProfissaoRepository;
+import rh.javapleno.pagamento.model.Pagamento;
 import rh.javapleno.pagamento.model.Profissao;
+import rh.javapleno.pagamento.model.Situacao;
 
 import java.util.List;
 import java.util.Optional;
@@ -42,5 +44,11 @@ public class ProfissaoService {
 
     public Optional<Profissao> pesquisarId(Long id) {
         return profissaoRepository.findById(id);
+    }
+
+    public Profissao alterarSituacao(Long id, Situacao situacao) {
+        Profissao pagamentoEntity = profissaoRepository.findById(id).orElseThrow();
+        pagamentoEntity.setSituacao(situacao);
+        return profissaoRepository.save(pagamentoEntity);
     }
 }
