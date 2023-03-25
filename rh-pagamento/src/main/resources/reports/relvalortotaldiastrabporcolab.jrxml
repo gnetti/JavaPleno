@@ -135,7 +135,7 @@ AND p.data  BETWEEN  $P{DATA_INICIO} AND $P{DATA_FIM}]]>
 			</textField>
 			<image hAlign="Center">
 				<reportElement x="0" y="0" width="65" height="60" uuid="94883631-a913-43e2-b182-ab8d77d0181e"/>
-				<imageExpression><![CDATA["C:/JavaPleno/rh-pagamento/src/main/resources/image/logo.png"]]></imageExpression>
+				<imageExpression><![CDATA["https://thumbs2.imgbox.com/e6/63/LrkKHdKa_t.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="375" y="25" width="50" height="15" uuid="0b3f9342-da78-4cfa-9fc5-2301c4749678"/>
