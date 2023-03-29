@@ -4,9 +4,8 @@ package rh.javapleno.pagamento.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import rh.javapleno.pagamento.Repository.ProfissaoRepository;
-import rh.javapleno.pagamento.model.Pagamento;
 import rh.javapleno.pagamento.model.Profissao;
-import rh.javapleno.pagamento.model.Situacao;
+import rh.javapleno.pagamento.enums.Situacao;
 
 import java.util.List;
 import java.util.Optional;

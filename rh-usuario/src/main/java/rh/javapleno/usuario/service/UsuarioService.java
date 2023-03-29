@@ -9,9 +9,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
+import rh.javapleno.usuario.component.EmailFeignClient;
+import rh.javapleno.usuario.enums.Situacao;
 import rh.javapleno.usuario.exceptions.UsuarioNaoEncontrado;
+import rh.javapleno.usuario.model.Email;
 import rh.javapleno.usuario.model.Endereco;
-import rh.javapleno.usuario.model.Situacao;
 import rh.javapleno.usuario.model.Usuario;
 import rh.javapleno.usuario.model.dto.UsuarioDTO;
 import rh.javapleno.usuario.repository.UsuarioRepository;
@@ -29,6 +31,7 @@ public class UsuarioService {
     private final PasswordEncoder passwordEncoder;
     @Autowired
     private final EnderecoService enderecoService;
+    private final EmailFeignClient emailFeignClient;
 
     public Usuario salvar(Usuario usuario) {
         String cep = usuario.getEndereco().getCep();
@@ -42,6 +45,18 @@ public class UsuarioService {
         }
         usuario.setSituacao(Situacao.ATIVO);
         Usuario usuarioModel = usuarioRepository.save(usuario);
+
+        Email email = Email.builder()
+                .emailTo(usuario.getEmail())
+                .emailFrom("answer.buffetfenix@gmail.com")
+                .subject(usuario.getNome())
+                .text("Seja Bem vindo " + usuario.getNome() + " , para acessar o site ")
+                .build();
+        try {
+            emailFeignClient.enviar(email);
+        } catch (RuntimeException e) {
+            log.error("{}", e);
+        }
         return usuarioModel;
     }
 

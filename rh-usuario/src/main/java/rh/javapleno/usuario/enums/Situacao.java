@@ -1,4 +1,4 @@
-package rh.javapleno.usuario.model;
+package rh.javapleno.usuario.enums;
 
 public enum Situacao{
 

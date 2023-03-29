@@ -2,6 +2,8 @@ package rh.javapleno.pagamento.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import rh.javapleno.pagamento.enums.Situacao;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;

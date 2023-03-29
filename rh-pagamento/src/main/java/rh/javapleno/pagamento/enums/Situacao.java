@@ -1,4 +1,4 @@
-package rh.javapleno.pagamento.model;
+package rh.javapleno.pagamento.enums;
 
 
 public enum Situacao {

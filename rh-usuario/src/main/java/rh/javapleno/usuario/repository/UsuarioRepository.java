@@ -3,7 +3,7 @@ package rh.javapleno.usuario.repository;
 import feign.Param;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import rh.javapleno.usuario.model.Situacao;
+import rh.javapleno.usuario.enums.Situacao;
 import rh.javapleno.usuario.model.Usuario;
 
 import java.util.List;

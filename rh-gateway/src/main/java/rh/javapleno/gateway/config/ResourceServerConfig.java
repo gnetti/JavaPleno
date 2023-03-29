@@ -27,9 +27,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	
 	private static final String[] PUBLIC = { "/rh-oauth/oauth/token" };
 
-	private static final String[] OPERATOR = { "/rh-colaborador/**", "/rh-usuario/usuario/login/email/**", "/rh-pagamento/pagamento/id/**/situacao/**", "/rh-pagamento/pagamento/colaborador/**" };
+	private static final String[] OPERATOR = { "/rh-colaborador/**", "/rh-usuario/usuario/login/email/**", "/rh-pagamento/pagamento/id/**/situacao/**", "/rh-pagamento/pagamento/colaborador/**", "/rh-email/**", };
 	
-	private static final String[] ADMIN = { "/rh-pagamento/**", "/rh-usuario/**", "/actuator/**", "/rh-colaborador/actuator/**", "/rh-oauth/actuator/**" };
+	private static final String[] ADMIN = { "/rh-pagamento/**", "/rh-usuario/**", "/actuator/**", "/rh-colaborador/actuator/**", "/rh-oauth/actuator/**", "/rh-email/**", };
 	
 	@Override
 	public void configure(ResourceServerSecurityConfigurer resources) throws Exception {

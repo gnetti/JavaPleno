@@ -11,7 +11,7 @@
 	<groupId>rh.javapleno</groupId>
 	<artifactId>rh-usuario</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>rh-usuarior</name>
+	<name>rh-usuario</name>
 	<description>Projeto Acelera Pleno Atos</description>
 
 	<properties>

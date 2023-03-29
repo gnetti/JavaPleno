@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rh.javapleno.pagamento.model.Pagamento;
 import rh.javapleno.pagamento.model.Profissao;
-import rh.javapleno.pagamento.model.Situacao;
+import rh.javapleno.pagamento.enums.Situacao;
 import rh.javapleno.pagamento.model.Usuario;
 import rh.javapleno.pagamento.model.dto.PagamentoDTO;
 import rh.javapleno.pagamento.service.PagamentoService;
@@ -44,13 +44,11 @@ public class PagamentoController {
     }
 
     @PostMapping("/{id}")
-
     public ResponseEntity<Pagamento> salvar(@RequestBody Pagamento pagamento, @PathVariable Long id) {
         return ResponseEntity.status(HttpStatus.CREATED).body(pagamentoService.salvar(pagamento, id));
     }
 
     @PatchMapping("/colaborador/{id}")
-
     public ResponseEntity<Pagamento> salvarParaColaborador(@RequestBody Pagamento pagamento, @PathVariable Long id) {
         return ResponseEntity.status(HttpStatus.CREATED).body(pagamentoService.salvar(pagamento, id));
     }
