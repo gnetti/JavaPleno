@@ -96,4 +96,11 @@ public class UsuarioController {
     public UsuarioDTO pesquisarEmailLogin(@RequestParam String email) {
         return new ModelMapper().map(usuarioService.pesquisarEmailLogin(email), UsuarioDTO.class);
     }
+
+    @PatchMapping("/id/{id}/password/{password}")
+    public ResponseEntity<Void> updateSenha(@PathVariable Long id, @PathVariable String password) {
+        usuarioService.atualizaSenha(id, password);
+        return ResponseEntity.noContent().build();
+    }
+
 }

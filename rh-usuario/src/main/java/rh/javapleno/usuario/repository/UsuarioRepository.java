@@ -2,10 +2,12 @@ package rh.javapleno.usuario.repository;
 
 import feign.Param;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import rh.javapleno.usuario.enums.Situacao;
 import rh.javapleno.usuario.model.Usuario;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,5 +26,9 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     Optional<Usuario> findByEmailAndColaboradorAndSituacao(String email, char colaborador, Situacao situacao);
 
     Optional<Usuario> findByEmailAndSituacao(String email, Situacao situacao);
+
+    @Modifying
+    @Query("update Usuario u set u.password = ?2 where u.id = ?1")
+    void updateSenha(Long id, String password);
 
 }

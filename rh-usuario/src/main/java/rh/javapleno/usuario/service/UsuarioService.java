@@ -182,4 +182,8 @@ public class UsuarioService {
         return usuario.orElseThrow(() -> new UsuarioNaoEncontrado("O usuário informado não existe"));
     }
 
+    public void atualizaSenha(Long id, String password) {
+        usuarioRepository.updateSenha(id, encode(password));
+    }
+
 }
