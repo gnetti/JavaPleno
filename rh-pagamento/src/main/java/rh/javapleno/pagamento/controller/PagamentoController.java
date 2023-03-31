@@ -50,7 +50,7 @@ public class PagamentoController {
 
     @PatchMapping("/colaborador/{id}")
     public ResponseEntity<Pagamento> salvarParaColaborador(@RequestBody Pagamento pagamento, @PathVariable Long id) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(pagamentoService.salvar(pagamento, id));
+        return ResponseEntity.status(HttpStatus.CREATED).body(pagamentoService.salvarParaColaborador(pagamento, id));
     }
 
     @GetMapping(value = "/busca/{id}")

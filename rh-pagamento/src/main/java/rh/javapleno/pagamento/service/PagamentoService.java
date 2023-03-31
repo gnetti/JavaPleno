@@ -5,13 +5,13 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 import rh.javapleno.pagamento.Repository.PagamentoRepository;
 import rh.javapleno.pagamento.component.EmailFeignClient;
+import rh.javapleno.pagamento.enums.Situacao;
 import rh.javapleno.pagamento.exceptions.PagamentoNaoEncontrado;
+import rh.javapleno.pagamento.model.Email;
 import rh.javapleno.pagamento.model.Pagamento;
 import rh.javapleno.pagamento.model.Profissao;
-import rh.javapleno.pagamento.enums.Situacao;
 import rh.javapleno.pagamento.model.Usuario;
 import rh.javapleno.pagamento.model.dto.PagamentoDTO;
 
@@ -28,11 +28,6 @@ public class PagamentoService {
     private final PagamentoRepository pagamentoRepository;
     private final UsuarioService usuarioService;
     private final ProfissaoService profissaoService;
-
-    private final String URL = "http://rh-email/email";
-
-    private final RestTemplate restTemplate;
-
     private final EmailFeignClient emailFeignClient;
 
     public List<PagamentoDTO> pesquisaTodos() {
@@ -60,6 +55,32 @@ public class PagamentoService {
         pagamento.setColaboradorId(usuarioResponseEntity.getBody().getId());
         pagamento.setSituacao(Situacao.ATIVO);
         return pagamentoRepository.save(pagamento);
+
+    }
+
+    public Pagamento salvarParaColaborador(Pagamento pagamento, Long id) {
+        validaDataPagamentoAtual(id, pagamento.getData());
+        ResponseEntity<Usuario> usuario = usuarioService.pesquisarId(id);
+        Optional<Profissao> profissao = profissaoService.pesquisarId(usuario.getBody().getProfissaoId());
+        pagamento.setColaboradorId(usuario.getBody().getId());
+        pagamento.setSituacao(Situacao.ATIVO);
+        Pagamento pagamentoModel = pagamentoRepository.save(pagamento);
+
+        Email email = Email.builder()
+                .emailTo("luizerytre@gmail.com")
+                .emailFrom("answer.buffetfenix@gmail.com")
+                .subject("Buffet Fenix")
+                .text("Olá, " + usuario.getBody().getNome()
+                        + " fez um lançamento de diária, "
+                        + "e aguarda sua aprovação!")
+                .build();
+        try {
+            emailFeignClient.enviar(email);
+        } catch (RuntimeException e) {
+            log.error("{}", e);
+        }
+
+        return pagamentoModel;
 
     }
 
@@ -115,9 +136,10 @@ public class PagamentoService {
     }
 
     public Pagamento alterarStatus(Long id, char status) {
-        Pagamento pagamentoEntity = pagamentoRepository.findById(id).orElseThrow();
-        pagamentoEntity.setStatus(status);
-        return pagamentoRepository.save(pagamentoEntity);
+        Pagamento pagamento = pagamentoRepository.findById(id).orElseThrow();
+        pagamento.setStatus(status);
+        Pagamento pagamentoModel = pagamentoRepository.save(pagamento);
+        return pagamentoModel;
     }
 
     public Pagamento pesquisarIdLan(Long id) {
