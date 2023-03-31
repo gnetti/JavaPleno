@@ -1,12 +1,14 @@
 package rh.javapleno.usuario.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang.RandomStringUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.yaml.snakeyaml.tokens.BlockEndToken;
 import rh.javapleno.usuario.model.Usuario;
 import rh.javapleno.usuario.model.dto.UsuarioDTO;
 import rh.javapleno.usuario.service.UsuarioService;
@@ -22,15 +24,11 @@ import java.util.Optional;
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
-
-
     private final PasswordEncoder passwordEncoder;
 
 
     @PostMapping
     public UsuarioDTO salvar(@RequestBody Usuario usuario) {
-        String senhaCriptrografada = passwordEncoder.encode(usuario.getPassword());
-        usuario.setPassword(senhaCriptrografada);
         return new ModelMapper().map(usuarioService.salvar(usuario), UsuarioDTO.class);
     }
 
@@ -88,6 +86,7 @@ public class UsuarioController {
     public UsuarioDTO pesquisarIdColaborador(@RequestParam String email) {
         return new ModelMapper().map(usuarioService.pesquisarEmailColaborador(email), UsuarioDTO.class);
     }
+
     @GetMapping(value = "/login")
     public ResponseEntity<Optional<Usuario>> pesquisarLogin(@RequestParam String email) {
         return usuarioService.pesquisarLogin(email);

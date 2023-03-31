@@ -3,6 +3,7 @@ package rh.javapleno.usuario.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.apache.commons.lang.RandomStringUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +34,10 @@ public class UsuarioService {
     private final EnderecoService enderecoService;
     private final EmailFeignClient emailFeignClient;
 
+    private String generateRandomPassword(int senha) {
+        return RandomStringUtils.randomAlphanumeric(senha);
+    }
+
     public Usuario salvar(Usuario usuario) {
         String cep = usuario.getEndereco().getCep();
 
@@ -43,14 +48,21 @@ public class UsuarioService {
             usuario.getEndereco().setCidade(endereco.getCidade());
             usuario.getEndereco().setUf(endereco.getUf());
         }
+        int senha = 10;
+        String senhaGerada = generateRandomPassword(senha);
+        String senhaCriptrografada = passwordEncoder.encode(senhaGerada);
+        usuario.setPassword(senhaCriptrografada);
         usuario.setSituacao(Situacao.ATIVO);
         Usuario usuarioModel = usuarioRepository.save(usuario);
 
         Email email = Email.builder()
                 .emailTo(usuario.getEmail())
                 .emailFrom("answer.buffetfenix@gmail.com")
-                .subject(usuario.getNome())
-                .text("Seja Bem vindo " + usuario.getNome() + " , para acessar o site ")
+                .subject("Buffet Fenix")
+                .text("Seja bem vindo " + usuario.getNome() + ", "
+                        + "  Login: " + " " + usuario.getEmail()
+                        + " " + " Senha: " + senhaGerada
+                + " " + " importante trocar sua senha no primeiro acesso! ")
                 .build();
         try {
             emailFeignClient.enviar(email);
