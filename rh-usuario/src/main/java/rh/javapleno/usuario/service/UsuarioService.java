@@ -19,6 +19,7 @@ import rh.javapleno.usuario.model.Usuario;
 import rh.javapleno.usuario.model.dto.UsuarioDTO;
 import rh.javapleno.usuario.repository.UsuarioRepository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -182,8 +183,14 @@ public class UsuarioService {
         return usuario.orElseThrow(() -> new UsuarioNaoEncontrado("O usuário informado não existe"));
     }
 
+    @Transactional
     public void atualizaSenha(Long id, String password) {
-        usuarioRepository.updateSenha(id, encode(password));
+        try {
+            usuarioRepository.findById(id).orElseThrow(() -> new UsuarioNaoEncontrado("O usuário informado não existe"));
+            usuarioRepository.updateSenha(id, encode(password));
+        } catch (Exception e) {
+            throw new RuntimeException("Ocorreu um erro ao alterar a senha.");
+        }
     }
 
 }

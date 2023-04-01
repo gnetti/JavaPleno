@@ -3,6 +3,7 @@ package rh.javapleno.usuario.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import rh.javapleno.usuario.config.PrimeiroAcessoConverter;
 import rh.javapleno.usuario.enums.Situacao;
 
 import javax.persistence.*;
@@ -40,6 +41,10 @@ public class Usuario implements Serializable {
     @Column(name = "situacao_usuario")
     @NotNull
     private Situacao situacao;
+
+    @Convert(converter = PrimeiroAcessoConverter.class)
+    @Column(name = "primeiro_acesso")
+    private Boolean primeiroAcesso = Boolean.TRUE;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "tb_role_usuario",

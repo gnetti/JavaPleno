@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import rh.javapleno.usuario.model.Role;
 
+import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import java.util.HashSet;
@@ -32,6 +33,9 @@ public class UsuarioDTO {
     private Endereco endereco;
 
     private Situacao situacao;
+
+    @Column(name = "primeiro_acesso")
+    private Boolean primeiroAcesso;
 
     @ManyToMany
     private Set<Role> roles = new HashSet<>();
