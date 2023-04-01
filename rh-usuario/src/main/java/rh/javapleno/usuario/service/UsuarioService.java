@@ -15,6 +15,7 @@ import rh.javapleno.usuario.enums.Situacao;
 import rh.javapleno.usuario.exceptions.UsuarioNaoEncontrado;
 import rh.javapleno.usuario.model.Email;
 import rh.javapleno.usuario.model.Endereco;
+import rh.javapleno.usuario.model.Role;
 import rh.javapleno.usuario.model.Usuario;
 import rh.javapleno.usuario.model.dto.UsuarioDTO;
 import rh.javapleno.usuario.repository.UsuarioRepository;
@@ -22,6 +23,7 @@ import rh.javapleno.usuario.repository.UsuarioRepository;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -54,6 +56,12 @@ public class UsuarioService {
         String senhaCriptrografada = passwordEncoder.encode(senhaGerada);
         usuario.setPassword(senhaCriptrografada);
         usuario.setSituacao(Situacao.ATIVO);
+
+        if(isColaborador(usuario.getRoles()))
+            usuario.setPrimeiroAcesso(Boolean.TRUE);
+        else
+            usuario.setPrimeiroAcesso(Boolean.FALSE);
+
         Usuario usuarioModel = usuarioRepository.save(usuario);
 
         Email email = Email.builder()
@@ -187,10 +195,14 @@ public class UsuarioService {
     public void atualizaSenha(Long id, String password) {
         try {
             usuarioRepository.findById(id).orElseThrow(() -> new UsuarioNaoEncontrado("O usuário informado não existe"));
-            usuarioRepository.updateSenha(id, encode(password));
+            usuarioRepository.updateSenha(id, encode(password),Boolean.FALSE);
         } catch (Exception e) {
             throw new RuntimeException("Ocorreu um erro ao alterar a senha.");
         }
+    }
+
+    public Boolean isColaborador(Set<Role> roles) {
+        return roles.stream().anyMatch(r -> r.getRoleName().equals("ROLE_COLABORADOR"));
     }
 
 }

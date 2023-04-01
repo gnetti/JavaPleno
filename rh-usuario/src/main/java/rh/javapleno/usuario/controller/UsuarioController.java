@@ -1,14 +1,12 @@
 package rh.javapleno.usuario.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.lang.RandomStringUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-import org.yaml.snakeyaml.tokens.BlockEndToken;
 import rh.javapleno.usuario.model.Usuario;
 import rh.javapleno.usuario.model.dto.UsuarioDTO;
 import rh.javapleno.usuario.service.UsuarioService;
