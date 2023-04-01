@@ -28,7 +28,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     Optional<Usuario> findByEmailAndSituacao(String email, Situacao situacao);
 
     @Modifying
-    @Query("update Usuario u set u.password = ?2 where u.id = ?1")
-    void updateSenha(Long id, String password);
+    @Query("update Usuario u set u.password = ?2, u.primeiroAcesso = ?3 where u.id = ?1")
+    void updateSenha(Long id, String password, Boolean primeiroAcesso);
 
 }

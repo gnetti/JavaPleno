@@ -44,7 +44,7 @@ public class Usuario implements Serializable {
 
     @Convert(converter = PrimeiroAcessoConverter.class)
     @Column(name = "primeiro_acesso")
-    private Boolean primeiroAcesso = Boolean.TRUE;
+    private Boolean primeiroAcesso;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "tb_role_usuario",
