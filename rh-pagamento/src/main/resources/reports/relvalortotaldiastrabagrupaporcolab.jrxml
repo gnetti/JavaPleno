@@ -63,7 +63,7 @@
 	<parameter name="DATA_INICIO" class="java.util.Date"/>
 	<parameter name="DATA_FIM" class="java.util.Date"/>
 	<queryString>
-		<![CDATA[SELECT u.id AS IdColaborador, u.nome AS NomeColaborador, pr.descricao AS Profissao,
+		<![CDATA[SELECT u.id AS IdColaborador, u.nome AS NomeColaborador, pr.descricao AS Profissao, u.matricula AS MatriculaColaborador,
 SUM(p.valor_dia) AS ValorTotal
 
  
@@ -73,7 +73,7 @@ JOIN tb_profissao as pr ON pr.id = u.profissao_id
 WHERE p.situacao_pagamento = 1 AND p.status= 1 AND  p.data  BETWEEN  $P{DATA_INICIO} AND $P{DATA_FIM}
 AND u.colaborador = '1'
 
-GROUP BY  u.id, u.nome
+GROUP BY  u.id, u.nome,u.matricula
 ORDER BY u.id]]>
 	</queryString>
 	<field name="IdColaborador" class="java.lang.Long">
@@ -90,6 +90,11 @@ ORDER BY u.id]]>
 		<property name="com.jaspersoft.studio.field.name" value="descricao"/>
 		<property name="com.jaspersoft.studio.field.label" value="Profissao"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tb_profissao"/>
+	</field>
+	<field name="MatriculaColaborador" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="matricula"/>
+		<property name="com.jaspersoft.studio.field.label" value="MatriculaColaborador"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_usuario"/>
 	</field>
 	<field name="ValorTotal" class="java.lang.Double">
 		<property name="com.jaspersoft.studio.field.name" value="ValorTotal"/>
@@ -192,7 +197,7 @@ ORDER BY u.id]]>
 					<rightPen lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Código]]></text>
+				<text><![CDATA[Matricula]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="80" y="0" width="300" height="20" backcolor="#DCDCDC" uuid="61150305-b9ec-4c29-9628-d781c6b38d6d">
@@ -249,13 +254,6 @@ ORDER BY u.id]]>
 				</graphicElement>
 			</rectangle>
 			<textField>
-				<reportElement x="0" y="0" width="80" height="20" uuid="2ad99174-9de9-4233-97fb-31f603c0dd1f">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4aeeafd4-6cf3-4f24-b6c4-210004089c11"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{IdColaborador}]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement x="80" y="0" width="300" height="20" uuid="5680be1c-5365-4e7b-b263-b7619f8cd157">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bbdef68e-6479-4ac0-a83c-25970a1995c2"/>
 				</reportElement>
@@ -275,6 +273,13 @@ ORDER BY u.id]]>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{Profissao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="80" height="20" uuid="15d7571b-c9bf-4a42-89ff-1aa6cf993d7f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0cf7fcd8-6a07-4605-a21d-69f41c27bb59"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{MatriculaColaborador}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

@@ -25,7 +25,10 @@ public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
+
+    private String matricula;
 
     @Column(unique = true, nullable = false)
     private String email;
@@ -33,14 +36,15 @@ public class Usuario implements Serializable {
     @CPF
     private String cpf;
 
-    private String matricula;
-
     @NotBlank(message = "Confirm Password is mandatory")
    // @Size(min=8,max=16)
     private String password;
+
     private char colaborador;
+
     @Embedded
     private Endereco endereco;
+
     private Long profissaoId;
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "situacao_usuario")
