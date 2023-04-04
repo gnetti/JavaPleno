@@ -41,6 +41,9 @@ public class UsuarioService {
         return RandomStringUtils.randomAlphanumeric(senha);
     }
 
+    private String geraMatricula(String matricula){return matricula.substring(0,9);
+    }
+
     public Usuario salvar(Usuario usuario) {
         String cep = usuario.getEndereco().getCep();
 
@@ -56,6 +59,9 @@ public class UsuarioService {
         String senhaCriptrografada = passwordEncoder.encode(senhaGerada);
         usuario.setPassword(senhaCriptrografada);
         usuario.setSituacao(Situacao.ATIVO);
+
+        String matriculaGerada = geraMatricula(usuario.getCpf());
+        usuario.setMatricula("BR"+matriculaGerada);
 
         if(isColaborador(usuario.getRoles()))
             usuario.setPrimeiroAcesso(Boolean.TRUE);

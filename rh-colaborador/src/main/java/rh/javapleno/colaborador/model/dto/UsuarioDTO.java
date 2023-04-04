@@ -13,10 +13,15 @@ public class UsuarioDTO {
 
     @Id
     private Long id;
+
+    private String matricula;
+
     private String nome;
 
     private String email;
+
     private char colaborador;
+
     private Long profissaoId;
 
 }

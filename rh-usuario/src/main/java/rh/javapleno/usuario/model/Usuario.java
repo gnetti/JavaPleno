@@ -3,6 +3,7 @@ package rh.javapleno.usuario.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.br.CPF;
 import rh.javapleno.usuario.config.PrimeiroAcessoConverter;
 import rh.javapleno.usuario.enums.Situacao;
 
@@ -24,18 +25,26 @@ public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
+
+    private String matricula;
 
     @Column(unique = true, nullable = false)
     private String email;
 
+    @CPF
+    private String cpf;
 
     @NotBlank(message = "Confirm Password is mandatory")
    // @Size(min=8,max=16)
     private String password;
+
     private char colaborador;
+
     @Embedded
     private Endereco endereco;
+
     private Long profissaoId;
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "situacao_usuario")
