@@ -3,6 +3,7 @@ package rh.javapleno.usuario.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.br.CPF;
 import rh.javapleno.usuario.config.PrimeiroAcessoConverter;
 import rh.javapleno.usuario.enums.Situacao;
 
@@ -29,6 +30,10 @@ public class Usuario implements Serializable {
     @Column(unique = true, nullable = false)
     private String email;
 
+    @CPF
+    private String cpf;
+
+    private String matricula;
 
     @NotBlank(message = "Confirm Password is mandatory")
    // @Size(min=8,max=16)

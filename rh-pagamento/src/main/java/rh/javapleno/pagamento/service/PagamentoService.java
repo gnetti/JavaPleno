@@ -174,5 +174,3 @@ public class PagamentoService {
                         .getData().equals(data));
     }
 }
-
-
