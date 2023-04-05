@@ -22,8 +22,6 @@ import java.util.Optional;
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
-    private final PasswordEncoder passwordEncoder;
-
 
     @PostMapping
     public UsuarioDTO salvar(@RequestBody Usuario usuario) {

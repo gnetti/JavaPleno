@@ -37,6 +37,7 @@ public class PagamentoService {
             PagamentoDTO pagamentoDTO = new PagamentoDTO();
             pagamentoDTO.setId(pagamento.getId());
             pagamentoDTO.setNomeColaborador(usuarioService.pesquisarId(pagamento.getColaboradorId()).getBody().getNome());
+            pagamentoDTO.setMatriculaColaborador(usuarioService.pesquisarId(pagamento.getColaboradorId()).getBody().getMatricula());
             pagamentoDTO.setColaboradorId(pagamento.getColaboradorId());
             pagamentoDTO.setData(pagamento.getData());
             pagamentoDTO.setValorDia(pagamento.getValorDia());
@@ -92,6 +93,7 @@ public class PagamentoService {
                 PagamentoDTO pagamentoDTO = new PagamentoDTO();
                 pagamentoDTO.setId(pagamento.getId());
                 pagamentoDTO.setNomeColaborador(usuarioService.pesquisarId(pagamento.getColaboradorId()).getBody().getNome());
+                pagamentoDTO.setMatriculaColaborador(usuarioService.pesquisarId(pagamento.getColaboradorId()).getBody().getMatricula());
                 pagamentoDTO.setColaboradorId(pagamento.getColaboradorId());
                 pagamentoDTO.setData(pagamento.getData());
                 pagamentoDTO.setValorDia(pagamento.getValorDia());
@@ -114,6 +116,7 @@ public class PagamentoService {
                 PagamentoDTO pagamentoDTO = new PagamentoDTO();
                 pagamentoDTO.setId(pagamento.getId());
                 pagamentoDTO.setNomeColaborador(usuarioService.pesquisarId(pagamento.getColaboradorId()).getBody().getNome());
+                pagamentoDTO.setMatriculaColaborador(usuarioService.pesquisarId(pagamento.getColaboradorId()).getBody().getMatricula());
                 pagamentoDTO.setColaboradorId(pagamento.getColaboradorId());
                 pagamentoDTO.setData(pagamento.getData());
                 pagamentoDTO.setValorDia(pagamento.getValorDia());
@@ -174,5 +177,3 @@ public class PagamentoService {
                         .getData().equals(data));
     }
 }
-
-

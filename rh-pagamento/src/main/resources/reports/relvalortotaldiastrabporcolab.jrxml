@@ -65,7 +65,7 @@
 	<parameter name="ID_COLABORADOR" class="java.lang.Long"/>
 	<queryString>
 		<![CDATA[SELECT 
- u.id AS IdColaborador, u.nome AS NomeColaborador, p.valor_dia  AS ValorDiadeTrabalhado, p.data  AS DataDiaTrabalhado,
+ u.id AS IdColaborador, u.nome AS NomeColaborador, p.valor_dia  AS ValorDiadeTrabalhado, p.data  AS DataDiaTrabalhado, u.matricula AS MatriculaColaborador,
  
  (SELECT pr.descricao FROM tb_profissao AS pr 
  JOIN tb_usuario AS u ON u.profissao_id = pr.id
@@ -95,6 +95,11 @@ AND p.data  BETWEEN  $P{DATA_INICIO} AND $P{DATA_FIM}]]>
 		<property name="com.jaspersoft.studio.field.name" value="data"/>
 		<property name="com.jaspersoft.studio.field.label" value="DataDiaTrabalhado"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tb_pagamento"/>
+	</field>
+	<field name="MatriculaColaborador" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="matricula"/>
+		<property name="com.jaspersoft.studio.field.label" value="MatriculaColaborador"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_usuario"/>
 	</field>
 	<field name="Profissao" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="Profissao"/>
@@ -207,7 +212,7 @@ AND p.data  BETWEEN  $P{DATA_INICIO} AND $P{DATA_FIM}]]>
 					<rightPen lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Código]]></text>
+				<text><![CDATA[Matricula]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="80" y="0" width="300" height="20" backcolor="#DCDCDC" uuid="61150305-b9ec-4c29-9628-d781c6b38d6d">
@@ -264,13 +269,6 @@ AND p.data  BETWEEN  $P{DATA_INICIO} AND $P{DATA_FIM}]]>
 				</graphicElement>
 			</rectangle>
 			<textField>
-				<reportElement x="0" y="0" width="80" height="20" uuid="2ad99174-9de9-4233-97fb-31f603c0dd1f">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4aeeafd4-6cf3-4f24-b6c4-210004089c11"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{IdColaborador}]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement x="80" y="0" width="300" height="20" uuid="5680be1c-5365-4e7b-b263-b7619f8cd157">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bbdef68e-6479-4ac0-a83c-25970a1995c2"/>
 				</reportElement>
@@ -290,6 +288,13 @@ AND p.data  BETWEEN  $P{DATA_INICIO} AND $P{DATA_FIM}]]>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{ValorDiadeTrabalhado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="80" height="20" uuid="7bf879dc-ba05-49b8-b093-f98b692905b3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6679df56-0928-43b6-b663-754b899b308c"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{MatriculaColaborador}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

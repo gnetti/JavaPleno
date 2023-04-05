@@ -13,6 +13,8 @@ public class PagamentoDTO {
     @Id
     private Long id;
 
+    private String matriculaColaborador;
+
     private String nomeColaborador;
 
     private Long colaboradorId;
