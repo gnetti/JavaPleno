@@ -20,6 +20,7 @@ public class ProfissaoController {
 
     @PostMapping
     public Profissao salvar(@RequestBody Profissao profissao) {
+        profissao.setSituacao(Situacao.ATIVO);
 
         return profissaoService.salvar(profissao);
     }
