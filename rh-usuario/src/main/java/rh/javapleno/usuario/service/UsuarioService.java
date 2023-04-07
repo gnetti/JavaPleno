@@ -41,7 +41,8 @@ public class UsuarioService {
         return RandomStringUtils.randomAlphanumeric(senha);
     }
 
-    private String geraMatricula(String matricula){return matricula.substring(0,9);
+    private String geraMatricula(String matricula) {
+        return matricula.substring(0, 9);
     }
 
     public Usuario salvar(Usuario usuario) {
@@ -61,9 +62,9 @@ public class UsuarioService {
         usuario.setSituacao(Situacao.ATIVO);
 
         String matriculaGerada = geraMatricula(usuario.getCpf());
-        usuario.setMatricula("BR"+matriculaGerada);
+        usuario.setMatricula("BR" + matriculaGerada);
 
-        if(isColaborador(usuario.getRoles()))
+        if (isColaborador(usuario.getRoles()))
             usuario.setPrimeiroAcesso(Boolean.TRUE);
         else
             usuario.setPrimeiroAcesso(Boolean.FALSE);
@@ -77,7 +78,7 @@ public class UsuarioService {
                 .text("Seja bem vindo " + usuario.getNome() + ", "
                         + "  Login: " + " " + usuario.getEmail()
                         + " " + " Senha: " + senhaGerada
-                + " " + " importante trocar sua senha no primeiro acesso! ")
+                        + " " + " importante trocar sua senha no primeiro acesso! ")
                 .build();
         try {
             emailFeignClient.enviar(email);
@@ -97,8 +98,6 @@ public class UsuarioService {
     }
 
     public Usuario alterar(Usuario usuario) {
-        String cep = usuario.getEndereco().getCep();
-
         if (usuario.getId() == null)
             throw new UsuarioNaoEncontrado("É nescessário informar um id do usuário para atualizar.");
         Usuario usuarioBD = pesquisarId(usuario.getId());
@@ -108,8 +107,6 @@ public class UsuarioService {
             usuario.setPassword(usuarioBD.getPassword());
         else
             usuario.setPassword(encode(usuario.getPassword()));
-        Endereco endereco = enderecoService.getEndereco(cep);
-        usuario.setEndereco(endereco);
         return usuarioRepository.save(usuario);
     }
 
@@ -201,7 +198,7 @@ public class UsuarioService {
     public void atualizaSenha(Long id, String password) {
         try {
             usuarioRepository.findById(id).orElseThrow(() -> new UsuarioNaoEncontrado("O usuário informado não existe"));
-            usuarioRepository.updateSenha(id, encode(password),Boolean.FALSE);
+            usuarioRepository.updateSenha(id, encode(password), Boolean.FALSE);
         } catch (Exception e) {
             throw new RuntimeException("Ocorreu um erro ao alterar a senha.");
         }

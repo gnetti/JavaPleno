@@ -14,6 +14,8 @@ import rh.javapleno.pagamento.service.PagamentoService;
 import rh.javapleno.pagamento.service.ProfissaoService;
 import rh.javapleno.pagamento.service.UsuarioService;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,11 +60,6 @@ public class PagamentoController {
         return pagamentoService.pesquisarColId(id);
     }
 
-    @GetMapping(value = "/busca/status/{status}")
-    public ResponseEntity<List<PagamentoDTO>> pesquisarStatus(@PathVariable char status) {
-        return pagamentoService.pesquisarStatus(status);
-    }
-
     @PatchMapping(value = "/id/{id}/situacao/{situacao}")
     public Pagamento alterarSituacao(@PathVariable Long id, @PathVariable Situacao situacao) {
         return pagamentoService.alterarSituacao(id, situacao);
@@ -76,6 +73,11 @@ public class PagamentoController {
     @GetMapping("/lancamento/{id}")
     public Pagamento pesquisarIdLan(@PathVariable Long id) {
         return pagamentoService.pesquisarIdLan(id);
+    }
+
+    @GetMapping("/lancamento/data")
+    public List<Pagamento> pesquisarPorData(@RequestParam LocalDate dataInicio, @RequestParam LocalDate dataFim) {
+        return (List<Pagamento>) pagamentoService.pesquisarPorData(dataInicio, dataFim);
     }
 
     @PutMapping
