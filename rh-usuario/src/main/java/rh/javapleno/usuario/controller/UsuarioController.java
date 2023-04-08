@@ -99,4 +99,9 @@ public class UsuarioController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/profissao-id/{profissaoId}")
+    public List<UsuarioDTO> findByProfissaoId(@PathVariable Long profissaoId) {
+        return usuarioService.findByProfissaoId(profissaoId);
+    }
+
 }

@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import rh.javapleno.pagamento.component.UsuarioFeignClient;
 import rh.javapleno.pagamento.model.Usuario;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class UsuarioService {
@@ -17,6 +19,10 @@ public class UsuarioService {
     }
     public ResponseEntity<Usuario> pesquisarTodos(){
         return usuarioFeignClient.pesquisarTodos();
+    }
+
+    public List<Usuario> findByProfissaoId(Long profissaoId) {
+        return usuarioFeignClient.findByProfissaoId(profissaoId);
     }
 
 }
