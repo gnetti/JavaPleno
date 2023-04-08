@@ -1,5 +1,6 @@
 package rh.javapleno.pagamento.service;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Sort;
@@ -14,9 +15,11 @@ import rh.javapleno.pagamento.model.Pagamento;
 import rh.javapleno.pagamento.model.Profissao;
 import rh.javapleno.pagamento.model.Usuario;
 import rh.javapleno.pagamento.model.dto.PagamentoDTO;
+import rh.javapleno.pagamento.util.DateUtils;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -152,5 +155,15 @@ public class PagamentoService {
                 .stream()
                 .anyMatch(pagamento -> pagamento
                         .getData().equals(data));
+    }
+
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    public List<Pagamento> pesquisarPorData(LocalDate dataInicio, LocalDate dataFim) {
+        if (dataInicio != null && dataFim != null ) {
+            return pagamentoRepository.findByDataBetween(dataInicio, dataFim);
+        } else {
+            throw new PagamentoNaoEncontrado("Pagamento não encontrado!");
+        }
+
     }
 }
