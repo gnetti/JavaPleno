@@ -25,7 +25,7 @@ public class ProfissaoService {
 
     private void validaProficao(Long profissaoId, Situacao situacao) {
         if(situacao.equals(Situacao.INATIVO) && !usuarioService.findByProfissaoId(profissaoId).isEmpty())
-            throw new RuntimeException("Está profissão, está sendo utilizadao em cadastro de colaborador.");
+            throw new RuntimeException("Está profissão, está sendo utilizada em um cadastro de colaborador.");
     }
 
     public void alterar(Profissao profissao) {
