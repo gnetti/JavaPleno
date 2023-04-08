@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.util.ObjectUtils;
 import rh.javapleno.usuario.component.EmailFeignClient;
 import rh.javapleno.usuario.enums.Situacao;
@@ -206,6 +207,13 @@ public class UsuarioService {
 
     public Boolean isColaborador(Set<Role> roles) {
         return roles.stream().anyMatch(r -> r.getRoleName().equals("ROLE_COLABORADOR"));
+    }
+
+    public List<UsuarioDTO> findByProfissaoId(Long profissaoId) {
+        return usuarioRepository.findByProfissaoId(profissaoId)
+                .stream()
+                .map(u -> new ModelMapper().map(u, UsuarioDTO.class))
+                .collect(Collectors.toList());
     }
 
 }

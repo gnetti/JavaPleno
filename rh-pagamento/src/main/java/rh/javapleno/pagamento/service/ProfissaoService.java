@@ -15,10 +15,17 @@ import java.util.Optional;
 public class ProfissaoService {
 
     private final ProfissaoRepository profissaoRepository;
+    private final UsuarioService usuarioService;
+
 
     public Profissao salvar(Profissao profissao) {
         Profissao roleModel = profissaoRepository.save(profissao);
         return roleModel;
+    }
+
+    private void validaProficao(Long profissaoId, Situacao situacao) {
+        if(situacao.equals(Situacao.INATIVO) && !usuarioService.findByProfissaoId(profissaoId).isEmpty())
+            throw new RuntimeException("Está profissão, está sendo utilizadao em cadastro de colaborador.");
     }
 
     public void alterar(Profissao profissao) {
@@ -46,6 +53,7 @@ public class ProfissaoService {
     }
 
     public Profissao alterarSituacao(Long id, Situacao situacao) {
+        validaProficao(id, situacao);
         Profissao pagamentoEntity = profissaoRepository.findById(id).orElseThrow();
         pagamentoEntity.setSituacao(situacao);
         return profissaoRepository.save(pagamentoEntity);
