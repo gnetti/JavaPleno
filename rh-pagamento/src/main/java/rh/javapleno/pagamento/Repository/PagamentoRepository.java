@@ -15,6 +15,5 @@ public interface PagamentoRepository extends JpaRepository<Pagamento, Long> {
 
     List<Pagamento> findByColaboradorIdAndSituacao(Long colaboradorId, Situacao situacao);
 
-    @Query(" select p from Pagamento p where p.status=1 and p.situacao=1 order by p.id asc")
-    List<Pagamento> findByDataBetween(LocalDate dataInicio, LocalDate dataFim);
+    List<Pagamento> findByColaboradorIdAndDataBetweenAndSituacaoAndStatusOrderByDataAsc(Long id, LocalDate dataInicio, LocalDate dataFim, Situacao situacao, char status);
 }
