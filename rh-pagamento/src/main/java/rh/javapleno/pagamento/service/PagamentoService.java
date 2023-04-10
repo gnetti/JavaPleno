@@ -15,11 +15,9 @@ import rh.javapleno.pagamento.model.Pagamento;
 import rh.javapleno.pagamento.model.Profissao;
 import rh.javapleno.pagamento.model.Usuario;
 import rh.javapleno.pagamento.model.dto.PagamentoDTO;
-import rh.javapleno.pagamento.util.DateUtils;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -158,12 +156,27 @@ public class PagamentoService {
     }
 
     @JsonFormat(pattern = "dd/MM/yyyy")
-    public List<Pagamento> pesquisarPorData(LocalDate dataInicio, LocalDate dataFim) {
-        if (dataInicio != null && dataFim != null ) {
-            return pagamentoRepository.findByDataBetween(dataInicio, dataFim);
-        } else {
-            throw new PagamentoNaoEncontrado("Pagamento não encontrado!");
+    public List<PagamentoDTO> pesquisarPorcolaboradorIdData(Long colaboradorId, LocalDate dataInicio, LocalDate dataFim) {
+        try {
+            char status = '1';
+            List<Pagamento> pagamentoList = pagamentoRepository.findByColaboradorIdAndDataBetweenAndSituacaoAndStatusOrderByDataAsc(colaboradorId, dataInicio, dataFim, Situacao.ATIVO, status);
+            List<PagamentoDTO> pagamentoDTOS = new ArrayList<>();
+            pagamentoList.forEach(pagamento -> {
+                PagamentoDTO pagamentoDTO = new PagamentoDTO();
+                pagamentoDTO.setId(pagamento.getId());
+                pagamentoDTO.setNomeColaborador(usuarioService.pesquisarId(pagamento.getColaboradorId()).getBody().getNome());
+                pagamentoDTO.setMatriculaColaborador(usuarioService.pesquisarId(pagamento.getColaboradorId()).getBody().getMatricula());
+                pagamentoDTO.setColaboradorId(pagamento.getColaboradorId());
+                pagamentoDTO.setData(pagamento.getData());
+                pagamentoDTO.setValorDia(pagamento.getValorDia());
+                pagamentoDTO.setSituacao(pagamento.getSituacao());
+                pagamentoDTO.setStatus(pagamento.getStatus());
+                pagamentoDTOS.add(pagamentoDTO);
+            });
+            return ResponseEntity.ok(pagamentoDTOS).getBody();
+        } catch (RuntimeException e) {
+            log.error("Erro na colsulta", e);
         }
-
+        return (List<PagamentoDTO>) ResponseEntity.noContent().build();
     }
 }

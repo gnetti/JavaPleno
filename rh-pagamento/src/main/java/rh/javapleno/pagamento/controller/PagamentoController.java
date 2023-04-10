@@ -15,7 +15,6 @@ import rh.javapleno.pagamento.service.ProfissaoService;
 import rh.javapleno.pagamento.service.UsuarioService;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -76,8 +75,8 @@ public class PagamentoController {
     }
 
     @GetMapping("/lancamento/data")
-    public List<Pagamento> pesquisarPorData(@RequestParam LocalDate dataInicio, @RequestParam LocalDate dataFim) {
-        return (List<Pagamento>) pagamentoService.pesquisarPorData(dataInicio, dataFim);
+    public List<PagamentoDTO> pesquisarPorcolaboradorIdData(@RequestParam Long colaboradorId, @RequestParam LocalDate dataInicio, @RequestParam LocalDate dataFim) {
+        return pagamentoService.pesquisarPorcolaboradorIdData(colaboradorId, dataInicio, dataFim);
     }
 
     @PutMapping
