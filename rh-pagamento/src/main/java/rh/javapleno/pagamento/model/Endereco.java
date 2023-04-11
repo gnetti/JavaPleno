@@ -10,7 +10,7 @@ public class Endereco {
     //@ApiModelProperty(example = "123", required = true)
     private Integer numero;
     // @JsonIgnoreProperties
-    // private String complemento;
+     private String complemento;
     ///@ApiModelProperty(example = "03590170", required = true)
     private String bairro;
     private String cep;

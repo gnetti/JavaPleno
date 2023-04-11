@@ -9,18 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
-import org.springframework.util.ObjectUtils;
 import rh.javapleno.usuario.component.EmailFeignClient;
 import rh.javapleno.usuario.enums.Situacao;
 import rh.javapleno.usuario.exceptions.UsuarioNaoEncontrado;
 import rh.javapleno.usuario.model.Email;
-import rh.javapleno.usuario.model.Endereco;
 import rh.javapleno.usuario.model.Role;
 import rh.javapleno.usuario.model.Usuario;
 import rh.javapleno.usuario.model.dto.UsuarioDTO;
 import rh.javapleno.usuario.repository.UsuarioRepository;
-
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
@@ -34,8 +30,7 @@ public class UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
     private final PasswordEncoder passwordEncoder;
-    @Autowired
-    private final EnderecoService enderecoService;
+
     private final EmailFeignClient emailFeignClient;
 
     private String generateRandomPassword(int senha) {
@@ -47,15 +42,7 @@ public class UsuarioService {
     }
 
     public Usuario salvar(Usuario usuario) {
-        String cep = usuario.getEndereco().getCep();
 
-        if (!ObjectUtils.isEmpty(cep)) {
-            Endereco endereco = enderecoService.getEndereco(cep);
-            usuario.getEndereco().setRua(endereco.getRua());
-            usuario.getEndereco().setBairro(endereco.getBairro());
-            usuario.getEndereco().setCidade(endereco.getCidade());
-            usuario.getEndereco().setUf(endereco.getUf());
-        }
         int senha = 10;
         String senhaGerada = generateRandomPassword(senha);
         String senhaCriptrografada = passwordEncoder.encode(senhaGerada);
