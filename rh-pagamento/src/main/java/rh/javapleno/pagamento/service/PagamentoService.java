@@ -84,7 +84,6 @@ public class PagamentoService {
         }
 
         return pagamentoModel;
-
     }
 
     public ResponseEntity<List<PagamentoDTO>> pesquisarColId(Long id) {

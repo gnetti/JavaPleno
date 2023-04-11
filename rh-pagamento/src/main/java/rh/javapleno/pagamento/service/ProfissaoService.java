@@ -17,14 +17,13 @@ public class ProfissaoService {
     private final ProfissaoRepository profissaoRepository;
     private final UsuarioService usuarioService;
 
-
     public Profissao salvar(Profissao profissao) {
         Profissao roleModel = profissaoRepository.save(profissao);
         return roleModel;
     }
 
     private void validaProficao(Long profissaoId, Situacao situacao) {
-        if(situacao.equals(Situacao.INATIVO) && !usuarioService.findByProfissaoId(profissaoId).isEmpty())
+        if (situacao.equals(Situacao.INATIVO) && !usuarioService.findByProfissaoId(profissaoId).isEmpty())
             throw new RuntimeException("Esta profissão, está sendo utilizada em um cadastro de colaborador.");
     }
 

@@ -84,4 +84,3 @@ public class PagamentoController {
         return ResponseEntity.status(HttpStatus.OK).body(pagamentoService.alterar(pagamento));
     }
 }
-

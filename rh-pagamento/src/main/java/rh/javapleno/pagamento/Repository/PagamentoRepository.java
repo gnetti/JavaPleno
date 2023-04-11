@@ -10,7 +10,6 @@ import java.util.List;
 
 
 public interface PagamentoRepository extends JpaRepository<Pagamento, Long> {
-
     List<Pagamento> findByColaboradorIdAndSituacaoOrderByIdDesc(Long id, Situacao situacao);
 
     List<Pagamento> findByColaboradorIdAndSituacao(Long colaboradorId, Situacao situacao);
