@@ -36,6 +36,9 @@ public class Usuario implements Serializable {
     @CPF
     private String cpf;
 
+    @Column(unique = true, nullable = false)
+    private String rg;
+
     @NotBlank(message = "Confirm Password is mandatory")
    // @Size(min=8,max=16)
     private String password;

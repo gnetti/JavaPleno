@@ -86,6 +86,8 @@ public class UsuarioService {
     }
 
     public Usuario alterar(Usuario usuario) {
+        String matriculaGerada = geraMatricula(usuario.getCpf());
+        usuario.setMatricula("BR" + matriculaGerada);
         if (usuario.getId() == null)
             throw new UsuarioNaoEncontrado("É nescessário informar um id do usuário para atualizar.");
         Usuario usuarioBD = pesquisarId(usuario.getId());

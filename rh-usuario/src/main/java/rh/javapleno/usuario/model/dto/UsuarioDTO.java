@@ -3,6 +3,7 @@ package rh.javapleno.usuario.model.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.br.CPF;
 import rh.javapleno.usuario.enums.Situacao;
 import rh.javapleno.usuario.model.Endereco;
 import rh.javapleno.usuario.model.Role;
@@ -21,6 +22,11 @@ public class UsuarioDTO {
 
     @Id
     private Long id;
+
+    @CPF
+    private String cpf;
+
+    private String rg;
 
     private String matricula;
 

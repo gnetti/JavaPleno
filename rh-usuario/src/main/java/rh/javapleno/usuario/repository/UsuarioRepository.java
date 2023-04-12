@@ -33,4 +33,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
     List<Usuario> findByProfissaoId(Long profissaoId);
 
+    @Query(" select u from Usuario u  order by u.id desc")
+    List<Usuario> findAll();
+
 }
