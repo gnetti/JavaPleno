@@ -16,6 +16,7 @@ import rh.javapleno.pagamento.model.Profissao;
 import rh.javapleno.pagamento.model.Usuario;
 import rh.javapleno.pagamento.model.dto.PagamentoDTO;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -155,9 +156,8 @@ public class PagamentoService {
     }
 
     @JsonFormat(pattern = "dd/MM/yyyy")
-    public List<PagamentoDTO> pesquisarPorcolaboradorIdData(Long colaboradorId, LocalDate dataInicio, LocalDate dataFim) {
+    public List<PagamentoDTO> pesquisarPorcolaboradorIdData(Long colaboradorId, LocalDate dataInicio, LocalDate dataFim, char status) {
         try {
-            char status = '1';
             List<Pagamento> pagamentoList = pagamentoRepository.findByColaboradorIdAndDataBetweenAndSituacaoAndStatusOrderByDataAsc(colaboradorId, dataInicio, dataFim, Situacao.ATIVO, status);
             List<PagamentoDTO> pagamentoDTOS = new ArrayList<>();
             pagamentoList.forEach(pagamento -> {
@@ -177,5 +177,11 @@ public class PagamentoService {
             log.error("Erro na colsulta", e);
         }
         return (List<PagamentoDTO>) ResponseEntity.noContent().build();
+    }
+
+    @Transactional
+    public void pagarPorcolaboradorIdData(Long colaboradorId, LocalDate dataInicio, LocalDate dataFim, char status) {
+        pagamentoRepository.updateStatus(colaboradorId, dataInicio, dataFim, status);
+
     }
 }

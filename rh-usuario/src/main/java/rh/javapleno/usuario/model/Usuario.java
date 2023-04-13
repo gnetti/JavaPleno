@@ -33,6 +33,9 @@ public class Usuario implements Serializable {
     @Column(unique = true, nullable = false)
     private String email;
 
+    @NotBlank
+    private  String telefone;
+
     @CPF
     private String cpf;
 

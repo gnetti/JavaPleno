@@ -28,6 +28,8 @@ public class UsuarioDTO {
 
     private String rg;
 
+    private  String telefone;
+
     private String matricula;
 
     private String nome;

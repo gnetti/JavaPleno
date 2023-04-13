@@ -5,9 +5,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import rh.javapleno.pagamento.enums.Situacao;
 import rh.javapleno.pagamento.model.Pagamento;
 import rh.javapleno.pagamento.model.Profissao;
-import rh.javapleno.pagamento.enums.Situacao;
 import rh.javapleno.pagamento.model.Usuario;
 import rh.javapleno.pagamento.model.dto.PagamentoDTO;
 import rh.javapleno.pagamento.service.PagamentoService;
@@ -75,9 +75,16 @@ public class PagamentoController {
     }
 
     @GetMapping("/lancamento/data")
-    public List<PagamentoDTO> pesquisarPorcolaboradorIdData(@RequestParam Long colaboradorId, @RequestParam LocalDate dataInicio, @RequestParam LocalDate dataFim) {
-        return pagamentoService.pesquisarPorcolaboradorIdData(colaboradorId, dataInicio, dataFim);
+    public List<PagamentoDTO> pesquisarPorcolaboradorIdData(@RequestParam Long colaboradorId, @RequestParam LocalDate dataInicio, @RequestParam LocalDate dataFim, @RequestParam char status) {
+        return pagamentoService.pesquisarPorcolaboradorIdData(colaboradorId, dataInicio, dataFim, status);
     }
+
+    @PatchMapping("/lancamento/pagar")
+    public ResponseEntity<Void> pagarPorcolaboradorIdData(@RequestParam Long colaboradorId, @RequestParam LocalDate dataInicio, @RequestParam LocalDate dataFim, @RequestParam char status) {
+        pagamentoService.pagarPorcolaboradorIdData(colaboradorId, dataInicio, dataFim, status);
+        return ResponseEntity.noContent().build();
+    }
+
 
     @PutMapping
     public ResponseEntity<Pagamento> alterar(@RequestBody Pagamento pagamento) {
