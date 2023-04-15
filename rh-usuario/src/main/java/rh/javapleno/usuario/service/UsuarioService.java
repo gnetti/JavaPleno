@@ -204,5 +204,10 @@ public class UsuarioService {
                 .map(u -> new ModelMapper().map(u, UsuarioDTO.class))
                 .collect(Collectors.toList());
     }
+    public Usuario alterarSituacao(Long id, Situacao situacao) {
 
+       Usuario usuarioEntity = usuarioRepository.findById(id).orElseThrow();
+        usuarioEntity.setSituacao(situacao);
+        return usuarioRepository.save(usuarioEntity);
+    }
 }

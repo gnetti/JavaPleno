@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import rh.javapleno.usuario.enums.Situacao;
 import rh.javapleno.usuario.model.Usuario;
 import rh.javapleno.usuario.model.dto.UsuarioDTO;
 import rh.javapleno.usuario.service.UsuarioService;
@@ -103,5 +104,8 @@ public class UsuarioController {
     public List<UsuarioDTO> findByProfissaoId(@PathVariable Long profissaoId) {
         return usuarioService.findByProfissaoId(profissaoId);
     }
-
+    @PatchMapping(value = "/id/{id}/situacao/{situacao}")
+    public Usuario alterarSituacao(@PathVariable Long id, @PathVariable Situacao situacao) {
+        return usuarioService.alterarSituacao(id, situacao);
+    }
 }
