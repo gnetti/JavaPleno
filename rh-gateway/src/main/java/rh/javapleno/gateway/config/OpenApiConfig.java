@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 @Component
 public class OpenApiConfig {
 
-    List<String> excludeRotas = List.of("rh-gateway", "rh-oauth", "rh-email");
+    List<String> excludeRotas = List.of("rh-gateway", "rh-oauth");
 
     public OpenApiConfig(SwaggerUiConfigParameters config,
                          RouteLocator locator) {
