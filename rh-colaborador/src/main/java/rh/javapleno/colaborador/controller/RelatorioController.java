@@ -32,29 +32,26 @@ public class RelatorioController {
 
     @Operation(summary = "Gera relatório de pagamento.")
     @GetMapping("/colaborador-total-pagar")
-    public ResponseEntity<byte[]> relvalortotaldiastrabporcolab(
-
+    public ResponseEntity<byte[]> relatorioVendas(
             @RequestParam(value = "id", required = false, defaultValue = "") Long id,
-            @RequestParam(value = "inicio", required = false, defaultValue = "") String inicio,
-            @RequestParam(value = "fim", required = false, defaultValue = "") String fim
-
-    ) {
-
+            @RequestParam(value = "inicio", required= false, defaultValue = "") String inicio,
+            @RequestParam(value = "fim", required= false, defaultValue = "") String fim
+    ){
         Date dataInicio = DateUtils.fromString(inicio);
         Date dataFim = DateUtils.fromString(fim, true);
 
-        if (dataInicio == null) {
+        if(dataInicio == null) {
             dataInicio = DateUtils.DATA_INICIO_PADRAO;
         }
-        if (dataFim == null) {
+
+        if(dataFim == null) {
             dataFim = DateUtils.hoje(true);
         }
 
-        var relatorioGerado = relatorioService.gerarRelatorio(id, dataInicio, dataFim);
+        var relatorioGerado = relatorioService.relvalortotaldiastrabporcolabid(id, dataInicio, dataFim);
         var headers = new HttpHeaders();
-        var fileName = "colaborador-total.pdf";
-
-        headers.setContentDispositionFormData("inline; filename=\"" + fileName + "\"", fileName);
+        var fileName = "colaborador-total-pagar.pdf";
+        headers.setContentDispositionFormData("inline; filename=\"" +fileName+ "\"", fileName);
         headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
         var responseEntity = new ResponseEntity<>(relatorioGerado, headers, HttpStatus.OK);
         return responseEntity;

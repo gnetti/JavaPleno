@@ -20,27 +20,28 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class RelatorioService {
 
-    @Value("classpath:reports/relvalortotaldiastrabporcolab.jrxml")
+    @Value("classpath:reports/relvalortotaldiastrabporcolab.jasper")
     private Resource relvalortotaldiastrabporcolab;
 
-    @Value("classpath:reports/relvalortotaldiastrabagrupaporcolab.jrxml")
+    @Value("classpath:reports/relvalortotaldiastrabagrupaporcolab.jasper")
     private Resource relvalortotaldiastrabagrupaporcolab;
 
     @Autowired
     private DataSource dataSource;
 
-    public byte[] gerarRelatorioRelvalortotaldiastrabporcolab(Long idColaborador, Date dataInicio, Date dataFim) {
+
+    public byte[] relvalortotaldiastrabporcolab(Long idColaborador, Date dataInicio, Date dataFim) {
         try (
                 Connection connection = dataSource.getConnection();
         ) {
-            JasperReport compileReport = JasperCompileManager.compileReport(relvalortotaldiastrabporcolab.getInputStream());
             Map<String, Object> parametros = new HashMap<>();
             parametros.put("ID_COLABORADOR",idColaborador);
             parametros.put("DATA_INICIO",dataInicio);
             parametros.put("DATA_FIM",dataFim);
-
-            JasperPrint print = JasperFillManager.fillReport(compileReport, parametros, connection);
-            return JasperExportManager.exportReportToPdf(print);
+            return JasperRunManager.runReportToPdf(
+                    relvalortotaldiastrabporcolab.getInputStream(),
+                    parametros,
+                    connection);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -53,17 +54,17 @@ public class RelatorioService {
         return null;
     }
 
-    public byte[] gerarRelatorioRelvalortotaldiastrabporcolab(Date dataInicio, Date dataFim) {
+    public byte[] relvalortotaldiastrabagrupaporcolab(Date dataInicio, Date dataFim) {
         try (
                 Connection connection = dataSource.getConnection();
         ) {
-            JasperReport compileReport = JasperCompileManager.compileReport(relvalortotaldiastrabagrupaporcolab.getInputStream());
             Map<String, Object> parametros = new HashMap<>();
-            parametros.put("DATA_INICIO",dataInicio);
-            parametros.put("DATA_FIM",dataFim);
-
-            JasperPrint print = JasperFillManager.fillReport(compileReport, parametros, connection);
-            return JasperExportManager.exportReportToPdf(print);
+            parametros.put("DATA_INICIO", dataInicio);
+            parametros.put("DATA_FIM", dataFim);
+            return JasperRunManager.runReportToPdf(
+                    relvalortotaldiastrabagrupaporcolab.getInputStream(),
+                    parametros,
+                    connection);
 
         } catch (SQLException e) {
             e.printStackTrace();
