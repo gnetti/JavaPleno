@@ -20,25 +20,24 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class RelatorioService {
 
-
-    @Value("classpath:reports/relvalortotaldiastrabporcolabid.jasper")
+    @Value("classpath:reports/relvalortotaldiastrabporcolabid.jrxml")
     private Resource relvalortotaldiastrabporcolabid;
 
     @Autowired
     private DataSource dataSource;
 
-    public byte[] relvalortotaldiastrabporcolabid(Long idColaborador, Date dataInicio, Date dataFim) {
+    public byte[] gerarRelatorio(Long idColaborador, Date dataInicio, Date dataFim) {
         try (
                 Connection connection = dataSource.getConnection();
         ) {
+            JasperReport compileReport = JasperCompileManager.compileReport(relvalortotaldiastrabporcolabid.getInputStream());
             Map<String, Object> parametros = new HashMap<>();
-            parametros.put("ID_COLABORADOR",idColaborador);
-            parametros.put("DATA_INICIO",dataInicio);
-            parametros.put("DATA_FIM",dataFim);
-            return JasperRunManager.runReportToPdf(
-                    relvalortotaldiastrabporcolabid.getInputStream(),
-                    parametros,
-                    connection);
+            parametros.put("ID_COLABORADOR", idColaborador);
+            parametros.put("DATA_INICIO", dataInicio);
+            parametros.put("DATA_FIM", dataFim);
+
+            JasperPrint print = JasperFillManager.fillReport(compileReport, parametros, connection);
+            return JasperExportManager.exportReportToPdf(print);
 
         } catch (SQLException e) {
             e.printStackTrace();

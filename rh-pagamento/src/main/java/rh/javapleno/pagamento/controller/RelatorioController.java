@@ -1,6 +1,8 @@
 package rh.javapleno.pagamento.controller;
 
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,59 +24,70 @@ import java.util.Date;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/relatorio")
+@Tag(name = "Relatório")
 public class RelatorioController {
 
     @Autowired
     RelatorioService relatorioService;
 
+    @Operation(summary = "Relatório dias trabalhados.")
     @GetMapping("/colaborador-total-pagar")
     public ResponseEntity<byte[]> relvalortotaldiastrabporcolab(
+
             @RequestParam(value = "id", required = false, defaultValue = "") Long id,
-            @RequestParam(value = "inicio", required= false, defaultValue = "") String inicio,
-            @RequestParam(value = "fim", required= false, defaultValue = "") String fim
-    ){
+            @RequestParam(value = "inicio", required = false, defaultValue = "") String inicio,
+            @RequestParam(value = "fim", required = false, defaultValue = "") String fim
+
+    ) {
+
         Date dataInicio = DateUtils.fromString(inicio);
         Date dataFim = DateUtils.fromString(fim, true);
 
-        if(dataInicio == null) {
+        if(dataInicio == null){
             dataInicio = DateUtils.DATA_INICIO_PADRAO;
         }
-
-        if(dataFim == null) {
+        if(dataFim==null){
             dataFim = DateUtils.hoje(true);
         }
 
-        var relatorioGerado = relatorioService.relvalortotaldiastrabporcolab(id, dataInicio, dataFim);
+        var relatorioGerado = relatorioService.gerarRelatorioRelvalortotaldiastrabporcolab(id, dataInicio, dataFim);
         var headers = new HttpHeaders();
         var fileName = "colaborador-total-pagar.pdf";
-        headers.setContentDispositionFormData("inline; filename=\"" +fileName+ "\"", fileName);
+
+        headers.setContentDispositionFormData("inline; filename=\"" + fileName + "\"", fileName);
         headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
         var responseEntity = new ResponseEntity<>(relatorioGerado, headers, HttpStatus.OK);
         return responseEntity;
+
     }
 
+    @Operation(summary = "Relatório pagamento.")
     @GetMapping("/lista-colaborador-total-pagar")
     public ResponseEntity<byte[]> relvalortotaldiastrabagrupaporcolab(
-            @RequestParam(value = "inicio", required= false, defaultValue = "") String inicio,
-            @RequestParam(value = "fim", required= false, defaultValue = "") String fim
-    ){
+
+            @RequestParam(value = "inicio", required = false, defaultValue = "") String inicio,
+            @RequestParam(value = "fim", required = false, defaultValue = "") String fim
+
+    ) {
+
         Date dataInicio = DateUtils.fromString(inicio);
         Date dataFim = DateUtils.fromString(fim, true);
 
-        if(dataInicio == null) {
+        if(dataInicio == null){
             dataInicio = DateUtils.DATA_INICIO_PADRAO;
         }
-
-        if(dataFim == null) {
+        if(dataFim==null){
             dataFim = DateUtils.hoje(true);
         }
 
-        var relatorioGerado = relatorioService.relvalortotaldiastrabagrupaporcolab(dataInicio, dataFim);
+        var relatorioGerado = relatorioService.gerarRelatorioRelvalortotaldiastrabporcolab(dataInicio, dataFim);
         var headers = new HttpHeaders();
         var fileName = "lista-colaborador-total-pagar.pdf";
-        headers.setContentDispositionFormData("inline; filename=\"" +fileName+ "\"", fileName);
+
+        headers.setContentDispositionFormData("inline; filename=\"" + fileName + "\"", fileName);
         headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
         var responseEntity = new ResponseEntity<>(relatorioGerado, headers, HttpStatus.OK);
         return responseEntity;
+
     }
 }
