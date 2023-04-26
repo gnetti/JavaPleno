@@ -15,6 +15,7 @@ public class Profissao{
     private String descricao;
 
     private Double valorDia;
+
     @Enumerated(EnumType.ORDINAL)
     private Situacao situacao;
 

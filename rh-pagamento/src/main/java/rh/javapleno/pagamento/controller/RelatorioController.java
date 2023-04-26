@@ -1,6 +1,8 @@
 package rh.javapleno.pagamento.controller;
 
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +24,13 @@ import java.util.Date;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/relatorio")
+@Tag(name = "Relatório")
 public class RelatorioController {
 
     @Autowired
     RelatorioService relatorioService;
 
+    @Operation(summary = "Relatório dias trabalhados.")
     @GetMapping("/colaborador-total-pagar")
     public ResponseEntity<byte[]> relvalortotaldiastrabporcolab(
 
@@ -56,6 +60,8 @@ public class RelatorioController {
         return responseEntity;
 
     }
+
+    @Operation(summary = "Relatório pagamento.")
     @GetMapping("/lista-colaborador-total-pagar")
     public ResponseEntity<byte[]> relvalortotaldiastrabagrupaporcolab(
 
